@@ -2,7 +2,10 @@
     "name": "ClockDisplay",
     "description": "Raspberry pi wall display including weather and indoor temperatures",
     "version": "0.0.1",
-    "dependencies": {},
+    "dependencies": {
+        "node-red-contrib-unit-converter": "0.0.2",
+        "node-red-dashboard": "2.23.3"
+    },
     "node-red": {
         "settings": {
             "flowFile": "flows_piserver.json",
