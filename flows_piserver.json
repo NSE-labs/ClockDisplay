@@ -1,1 +1,3807 @@
-[{"id":"d6b5a0d5.208678","type":"tab","label":"Weather observations","disabled":false,"info":""},{"id":"1539426a.37d8ce","type":"tab","label":"Weather forecast","disabled":false,"info":""},{"id":"1528894b.73fa5f","type":"tab","label":"Weather alerts","disabled":false,"info":""},{"id":"806ca4b7.f7d72","type":"tab","label":"Sensors","disabled":false,"info":""},{"id":"ffed9118.13547","type":"tab","label":"Clock","disabled":false,"info":""},{"id":"db0601ad.cbffd8","type":"tab","label":"Testing","disabled":false,"info":""},{"id":"9261508f.204d7","type":"subflow","name":"Get detailed forecast","info":"","category":"","in":[{"x":0,"y":80,"wires":[{"id":"f62ca12b.19dde"}]}],"out":[{"x":400,"y":80,"wires":[{"id":"f62ca12b.19dde","port":0}]}],"env":[{"name":"PERIOD","type":"num","value":""}],"color":"#DDAA99"},{"id":"97af54d5.455cd","type":"subflow","name":"Get forecast temperature","info":"","category":"","in":[{"x":0,"y":80,"wires":[{"id":"93ae98d6.f6f238"}]}],"out":[{"x":380,"y":80,"wires":[{"id":"93ae98d6.f6f238","port":0}]}],"env":[{"name":"PERIOD","type":"num","value":""}],"color":"#DDAA99"},{"id":"3c56223b.56b5c6","type":"subflow","name":"Get weather icon","info":"","category":"","in":[{"x":40,"y":80,"wires":[{"id":"46c2805f.796e58"}]}],"out":[{"x":360,"y":80,"wires":[{"id":"46c2805f.796e58","port":0}]}],"env":[{"name":"PERIOD","type":"num","value":""}],"color":"#DDAA99"},{"id":"cfb226a0.12274","type":"subflow","name":"Format time","info":"","category":"","in":[{"x":-20,"y":80,"wires":[{"id":"1a38b046.60ec3"}]}],"out":[{"x":400,"y":80,"wires":[{"id":"1a38b046.60ec3","port":0}]}],"env":[],"color":"#DDAA99","status":{"x":260,"y":260,"wires":[{"id":"8e2ee7b6.d43ee8","port":0}]}},{"id":"342e347.23b064c","type":"subflow","name":"Check exec result","info":"","category":"","in":[{"x":40,"y":100,"wires":[{"id":"5b0326bb.59ac88"}]}],"out":[{"x":340,"y":80,"wires":[{"id":"5b0326bb.59ac88","port":0}]},{"x":340,"y":140,"wires":[{"id":"5b0326bb.59ac88","port":1}]}],"env":[{"name":"ERROR_MESSAGE","type":"str","value":"Exec command failed"}],"color":"#DDAA99","outputLabels":["message if OK","retry"],"status":{"x":260,"y":320,"wires":[{"id":"e01e36a1.6e8158","port":0}]}},{"id":"c44de0cd.3d696","type":"subflow","name":"Decode weather alert","info":"","category":"","in":[{"x":20,"y":80,"wires":[{"id":"83e8f5b0.f59bf8"}]}],"out":[{"x":740,"y":80,"wires":[{"id":"ab4087b0.e6191","port":0}]}],"env":[],"color":"#DDAA99"},{"id":"12cba20c.5228de","type":"subflow","name":"Convert and verify","info":"","category":"","in":[{"x":200,"y":80,"wires":[{"id":"999cdaa2.6ea2e"}]}],"out":[{"x":840,"y":60,"wires":[{"id":"32b75104.0e629e","port":0}]},{"x":840,"y":120,"wires":[{"id":"32b75104.0e629e","port":1}]}],"env":[],"color":"#DDAA99","outputLabels":["message","retry"],"status":{"x":640,"y":220,"wires":[{"id":"e11afd0e.97949","port":0}]}},{"id":"88e70c38.732038","type":"mqtt-broker","z":"","name":"piserver","broker":"192.168.2.32","port":"1883","clientid":"","usetls":false,"compatmode":false,"keepalive":"60","cleansession":true,"birthTopic":"","birthQos":"0","birthPayload":"","closeTopic":"","closeQos":"0","closePayload":"","willTopic":"","willQos":"0","willPayload":""},{"id":"f14a494e.897218","type":"ui_base","theme":{"name":"theme-dark","lightTheme":{"default":"#0094CE","baseColor":"#0094CE","baseFont":"-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif","edited":true,"reset":false},"darkTheme":{"default":"#097479","baseColor":"#097479","baseFont":"Arial,Arial,Helvetica,sans-serif","edited":true,"reset":false},"customTheme":{"name":"Untitled Theme 1","default":"#4B7930","baseColor":"#4B7930","baseFont":"-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"},"themeState":{"base-color":{"default":"#097479","value":"#097479","edited":false},"page-titlebar-backgroundColor":{"value":"#097479","edited":false},"page-backgroundColor":{"value":"#111111","edited":false},"page-sidebar-backgroundColor":{"value":"#333333","edited":false},"group-textColor":{"value":"#0eb8c0","edited":false},"group-borderColor":{"value":"#555555","edited":false},"group-backgroundColor":{"value":"#333333","edited":false},"widget-textColor":{"value":"#eeeeee","edited":false},"widget-backgroundColor":{"value":"#097479","edited":false},"widget-borderColor":{"value":"#333333","edited":false},"base-font":{"value":"Arial,Arial,Helvetica,sans-serif"}},"angularTheme":{"primary":"indigo","accents":"blue","warn":"red","background":"grey"}},"site":{"name":"Home Dashboard","hideToolbar":"true","allowSwipe":"true","lockMenu":"false","allowTempTheme":"true","dateFormat":"DD/MM/YYYY","sizes":{"sx":47,"sy":49,"gx":0,"gy":0,"cx":0,"cy":0,"px":0,"py":0}}},{"id":"3e54635b.a9baec","type":"ui_group","z":"","name":"Inside temperatures","tab":"bb461d95.632068","order":1,"disp":true,"width":"8","collapse":false},{"id":"3eb3d821.25aa68","type":"tls-config","z":"","name":"","cert":"","key":"","ca":"","certname":"","keyname":"","caname":"","servername":"","verifyservercert":true},{"id":"bb461d95.632068","type":"ui_tab","z":"","name":"History","icon":"dashboard","order":5,"disabled":false,"hidden":false},{"id":"5a610406.7a566c","type":"ui_spacer","name":"spacer","group":"","order":6,"width":12,"height":1},{"id":"450eb216.dd0954","type":"ui_spacer","name":"spacer","group":"","order":8,"width":12,"height":1},{"id":"efdde1ba.6f17e8","type":"ui_spacer","name":"spacer","group":"","order":9,"width":12,"height":1},{"id":"c0f3491b.1f5998","type":"ui_spacer","name":"spacer","group":"","order":10,"width":12,"height":1},{"id":"7506c0bb.23057","type":"ui_spacer","name":"spacer","group":"","order":11,"width":12,"height":1},{"id":"411b4d0a.0472a4","type":"ui_spacer","name":"spacer","group":"","order":12,"width":12,"height":1},{"id":"6cfa20c7.8787c","type":"ui_spacer","name":"spacer","group":"","order":1,"width":1,"height":1},{"id":"367db137.d52446","type":"ui_spacer","name":"spacer","group":"","order":3,"width":1,"height":1},{"id":"a453a018.22725","type":"ui_spacer","name":"spacer","group":"","order":5,"width":1,"height":1},{"id":"22a4c0b1.fe82e","type":"ui_spacer","name":"spacer","group":"","order":6,"width":1,"height":1},{"id":"89f27085.19f808","type":"ui_spacer","name":"spacer","group":"","order":8,"width":1,"height":1},{"id":"1bedb516.9432d3","type":"ui_spacer","name":"spacer","group":"","order":10,"width":1,"height":1},{"id":"d6cd3cb2.f8ef98","type":"ui_spacer","name":"spacer","group":"","order":11,"width":1,"height":1},{"id":"d06784f6.16ccc","type":"ui_spacer","name":"spacer","group":"","order":13,"width":1,"height":1},{"id":"5e580c97.ee31fc","type":"ui_spacer","name":"spacer","group":"","order":15,"width":1,"height":1},{"id":"1731e3a1.d5a924","type":"ui_spacer","name":"spacer","group":"","order":8,"width":13,"height":1},{"id":"4e0f1ea3.026a7","type":"ui_spacer","name":"spacer","group":"","order":11,"width":1,"height":1},{"id":"eacdcb5f.332fb","type":"ui_spacer","name":"spacer","group":"","order":16,"width":1,"height":1},{"id":"97deab20.b5526","type":"ui_spacer","name":"spacer","group":"","order":19,"width":1,"height":1},{"id":"dca579f8.6c18a","type":"ui_spacer","name":"spacer","group":"","order":20,"width":1,"height":1},{"id":"f7653745.b390f","type":"ui_spacer","name":"spacer","group":"","order":23,"width":1,"height":1},{"id":"1f015ad9.11d855","type":"ui_spacer","name":"spacer","group":"","order":28,"width":1,"height":1},{"id":"a9cfba8e.37617","type":"ui_spacer","name":"spacer","group":"","order":31,"width":1,"height":1},{"id":"bd3a5e5c.7bcba","type":"ui_spacer","name":"spacer","group":"","order":32,"width":1,"height":1},{"id":"4f3f2259.8caa6c","type":"ui_spacer","name":"spacer","group":"","order":1,"width":1,"height":1},{"id":"bc5dbbf7.a4a878","type":"ui_spacer","name":"spacer","group":"","order":3,"width":1,"height":1},{"id":"b97f9b24.dd45f","type":"ui_spacer","name":"spacer","group":"","order":5,"width":1,"height":1},{"id":"f92f5524.7fe7f8","type":"ui_spacer","name":"spacer","group":"","order":6,"width":1,"height":1},{"id":"ad8f261a.42fc38","type":"ui_spacer","name":"spacer","group":"","order":8,"width":1,"height":1},{"id":"42144d2d.743f8c","type":"ui_spacer","name":"spacer","group":"","order":10,"width":1,"height":1},{"id":"7d1b10cf.f1bdc8","type":"ui_spacer","name":"spacer","group":"","order":11,"width":1,"height":1},{"id":"a7e8049e.7a07d","type":"ui_spacer","name":"spacer","group":"","order":13,"width":1,"height":1},{"id":"54a8436b.d591fc","type":"ui_spacer","name":"spacer","group":"","order":15,"width":1,"height":1},{"id":"764186bb.62631","type":"ui_spacer","name":"spacer","group":"","order":8,"width":13,"height":1},{"id":"5f4f8b70.2a519c","type":"ui_spacer","name":"spacer","group":"","order":11,"width":1,"height":1},{"id":"4c1e1011.1c096","type":"ui_spacer","name":"spacer","group":"","order":16,"width":1,"height":1},{"id":"a2b5131a.e12138","type":"ui_spacer","name":"spacer","group":"","order":19,"width":1,"height":1},{"id":"4e8fb8f7.4c8ab8","type":"ui_spacer","name":"spacer","group":"","order":20,"width":1,"height":1},{"id":"3ff1e3fd.c9a814","type":"ui_spacer","name":"spacer","group":"","order":23,"width":1,"height":1},{"id":"7316d7f2.141e4","type":"ui_spacer","name":"spacer","group":"","order":28,"width":1,"height":1},{"id":"31c471b2.3a0246","type":"ui_spacer","name":"spacer","group":"","order":31,"width":1,"height":1},{"id":"c59aa76b.b8db","type":"ui_spacer","name":"spacer","group":"","order":32,"width":1,"height":1},{"id":"d30f6c0a.6e29e8","type":"ui_group","z":"","name":"Whole screen","tab":"b4439fa7.47faf8","order":4,"disp":false,"width":"30","collapse":false},{"id":"b4439fa7.47faf8","type":"ui_tab","z":"","name":"Dashboard","icon":"dashboard","order":1,"disabled":false,"hidden":false},{"id":"ef92bf54.f130d","type":"ui_group","z":"","name":"Outside temperature","tab":"bb461d95.632068","order":2,"disp":true,"width":"8","collapse":false},{"id":"e4ef27d5.399958","type":"ui_group","z":"","name":"Kiln temperatures","tab":"bb461d95.632068","order":3,"disp":true,"width":"8","collapse":false},{"id":"c9ce8888.d73f58","type":"ui_group","z":"","name":"Alerts","tab":"","order":1,"disp":true,"width":15,"collapse":false},{"id":"8ec365a6.71983","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":3,"width":1,"height":1},{"id":"da7b4a56.840768","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":8,"width":1,"height":1},{"id":"3cf1d85e.0a4068","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":13,"width":1,"height":1},{"id":"b55526e3.7154e","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":16,"width":1,"height":1},{"id":"a8a193f1.fbfaa","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":19,"width":1,"height":1},{"id":"8e70a9d4.01179","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":20,"width":1,"height":1},{"id":"e0703fd9.82651","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":23,"width":1,"height":1},{"id":"25f955e5.be46d2","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":26,"width":1,"height":1},{"id":"7be441a0.ef022","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":27,"width":1,"height":1},{"id":"65c82e1e.cacc2","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":28,"width":1,"height":1},{"id":"97f2e2a0.f66ca","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":29,"width":1,"height":1},{"id":"421ba401.2bc37c","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":30,"width":1,"height":1},{"id":"dbf7b576.dde44","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":31,"width":1,"height":1},{"id":"9861b1ec.4c7418","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":32,"width":1,"height":1},{"id":"8dcea05b.216e4","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":33,"width":15,"height":1},{"id":"e01af157.ab0d","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":34,"width":1,"height":1},{"id":"9ff53e76.42519","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":37,"width":1,"height":1},{"id":"140a7653.0319f2","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":40,"width":1,"height":1},{"id":"331f0294.f44f3e","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":41,"width":1,"height":1},{"id":"527c6536.f58f54","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":44,"width":1,"height":1},{"id":"75ac37e9.a5efe","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":47,"width":2,"height":1},{"id":"c24ffa9f.e0457","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":50,"width":1,"height":1},{"id":"58646bac.057c0c","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":53,"width":1,"height":1},{"id":"88aa4307.031a9","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":54,"width":1,"height":1},{"id":"491fb64d.7b3958","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":55,"width":1,"height":1},{"id":"3c973d6f.20a7b2","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":56,"width":2,"height":1},{"id":"5994263a.23459","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":59,"width":1,"height":1},{"id":"c90e0d52.a47df","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":62,"width":1,"height":1},{"id":"62836cd0.8d262c","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":63,"width":1,"height":1},{"id":"459a2660.7c0328","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":64,"width":1,"height":1},{"id":"a1f7eec.846a99","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":65,"width":2,"height":1},{"id":"9242a8c9.32ff8","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":68,"width":1,"height":1},{"id":"f009218.b7235e","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":71,"width":1,"height":1},{"id":"f916c0d7.e1f688","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":72,"width":23,"height":1},{"id":"bbdd0538.c0adf","type":"ui_spacer","name":"spacer","group":"d30f6c0a.6e29e8","order":75,"width":1,"height":1},{"id":"3cb216fa.0eeb0a","type":"inject","z":"1539426a.37d8ce","name":"timer","props":[],"repeat":"900","crontab":"","once":true,"onceDelay":0.1,"topic":"","payloadType":"str","x":110,"y":60,"wires":[["daa2bc3c.12f73"]]},{"id":"daa2bc3c.12f73","type":"exec","z":"1539426a.37d8ce","command":"curl -X GET \"https://api.weather.gov/gridpoints/MKX/37,52/forecast?units=us\" -H  \"accept: application/geo+json\"","addpay":false,"append":"","useSpawn":"false","timer":"","oldrc":false,"name":"Get forecast","x":150,"y":160,"wires":[["45cf4f69.eb4ff8"],[],[]]},{"id":"999cdaa2.6ea2e","type":"json","z":"12cba20c.5228de","name":"JSON to object 2","property":"payload","action":"","pretty":false,"x":370,"y":80,"wires":[["32b75104.0e629e"]]},{"id":"1f2abfc6.92c1f8","type":"ui_text","z":"1539426a.37d8ce","group":"d30f6c0a.6e29e8","order":10,"width":15,"height":2,"name":"Detailed forecast 0","label":"<font size=\"4\" color=\"cyan\">{{msg.label}}</font>","format":"{{msg.payload}}","layout":"col-center","x":1290,"y":20,"wires":[]},{"id":"1aec96c4.aac819","type":"ui_text","z":"1539426a.37d8ce","group":"d30f6c0a.6e29e8","order":17,"width":3,"height":1,"name":"Forecast temp 2","label":"<font size=\"2\" color=\"cyan\">{{msg.label}}</font>","format":"<font size=\"6\">{{msg.payload}} &deg;F</font>","layout":"col-center","x":1280,"y":180,"wires":[]},{"id":"16bb1da4.910082","type":"ui_text","z":"1539426a.37d8ce","group":"d30f6c0a.6e29e8","order":18,"width":3,"height":1,"name":"Forecast temp 3","label":"<font size=\"2\" color=\"cyan\">{{msg.label}}</font>","format":"<font size=\"6\">{{msg.payload}} &deg;F</font>","layout":"col-center","x":1280,"y":220,"wires":[]},{"id":"1dab5252.0712ee","type":"ui_text","z":"1539426a.37d8ce","group":"d30f6c0a.6e29e8","order":35,"width":3,"height":1,"name":"Forecast temp 4","label":"<font size=\"2\" color=\"cyan\">{{msg.label}}</font>","format":"<font size=\"6\">{{msg.payload}} &deg;F</font>","layout":"col-center","x":1280,"y":260,"wires":[]},{"id":"42810ce4.251cac","type":"ui_template","z":"1539426a.37d8ce","group":"d30f6c0a.6e29e8","name":"icon 0","order":21,"width":3,"height":3,"format":"<img src={{msg.payload}} />","storeOutMessages":true,"fwdInMessages":true,"resendOnRefresh":true,"templateScope":"local","x":1190,"y":420,"wires":[[]]},{"id":"46c2805f.796e58","type":"function","z":"3c56223b.56b5c6","name":"Extract icon","func":"let p = env.get(\"PERIOD\");\nif (typeof msg.payload.properties.periods[p].icon === \"undefined\")\n{\n    // usually happens if the weather API returns an error\n    return null; // don't post any message\n}\nreturn { payload : msg.payload.properties.periods[p].icon };\n","outputs":1,"noerr":0,"initialize":"","finalize":"","x":190,"y":80,"wires":[[]]},{"id":"c8ce02fd.818f6","type":"ui_template","z":"1539426a.37d8ce","group":"d30f6c0a.6e29e8","name":"icon 1","order":22,"width":3,"height":3,"format":"<img src={{msg.payload}} />","storeOutMessages":true,"fwdInMessages":true,"resendOnRefresh":true,"templateScope":"local","x":1190,"y":460,"wires":[[]]},{"id":"8a7df207.b53ce","type":"ui_template","z":"1539426a.37d8ce","group":"d30f6c0a.6e29e8","name":"icon 2","order":24,"width":3,"height":3,"format":"<img src={{msg.payload}} />","storeOutMessages":true,"fwdInMessages":true,"resendOnRefresh":true,"templateScope":"local","x":1190,"y":500,"wires":[[]]},{"id":"d87fe56b.65022","type":"ui_template","z":"1539426a.37d8ce","group":"d30f6c0a.6e29e8","name":"icon 3","order":25,"width":3,"height":3,"format":"<img src={{msg.payload}} />","storeOutMessages":true,"fwdInMessages":true,"resendOnRefresh":true,"templateScope":"local","x":1190,"y":540,"wires":[[]]},{"id":"6c1fc848.036f4","type":"ui_template","z":"1539426a.37d8ce","group":"d30f6c0a.6e29e8","name":"icon 4","order":42,"width":3,"height":3,"format":"<img src={{msg.payload}} />","storeOutMessages":true,"fwdInMessages":true,"resendOnRefresh":true,"templateScope":"local","x":1190,"y":580,"wires":[[]]},{"id":"443f2305.b206c4","type":"mqtt in","z":"806ca4b7.f7d72","name":"Living room temperature","topic":"home/livingroom/temperature1","qos":"0","datatype":"auto","broker":"88e70c38.732038","x":190,"y":180,"wires":[["294a0faf.ba9bc"]]},{"id":"8743b0d7.d822e8","type":"ui_gauge","z":"806ca4b7.f7d72","name":"Living room temperature","group":"d30f6c0a.6e29e8","order":49,"width":1,"height":1,"gtype":"donut","title":"","label":"","format":"","min":"42","max":"102","colors":["#0000ff","#00ff00","#ca3838"],"seg1":"68","seg2":"80","x":1050,"y":200,"wires":[]},{"id":"fce70713.fa622","type":"mqtt in","z":"806ca4b7.f7d72","name":"All","topic":"#","qos":"0","datatype":"auto","broker":"88e70c38.732038","x":150,"y":80,"wires":[["6afbee16.3a023"]]},{"id":"6afbee16.3a023","type":"debug","z":"806ca4b7.f7d72","name":"","active":false,"tosidebar":true,"console":false,"tostatus":false,"complete":"payload","targetType":"msg","statusVal":"","statusType":"auto","x":370,"y":80,"wires":[]},{"id":"fc8fe227.3beb7","type":"mqtt in","z":"806ca4b7.f7d72","name":"Lab Temperature","topic":"home/lab/temperature1","qos":"0","datatype":"auto","broker":"88e70c38.732038","x":160,"y":300,"wires":[["7601c83a.d1d07"]]},{"id":"9d966841.9a1a9","type":"ui_gauge","z":"806ca4b7.f7d72","name":"Ham shack temperature","group":"d30f6c0a.6e29e8","order":52,"width":1,"height":1,"gtype":"donut","title":"","label":"","format":"","min":"42","max":"102","colors":["#0000ff","#00ff00","#ca3838"],"seg1":"68","seg2":"80","x":1050,"y":360,"wires":[]},{"id":"b58fe14c.18f3c8","type":"mqtt in","z":"806ca4b7.f7d72","name":"Kiln temperature","topic":"home/kiln/temp","qos":"0","datatype":"auto","broker":"88e70c38.732038","x":160,"y":520,"wires":[["f9dc5287.bcfbb"]]},{"id":"fa55c6cb.3946a8","type":"ui_gauge","z":"806ca4b7.f7d72","name":"Kiln temperature","group":"d30f6c0a.6e29e8","order":70,"width":1,"height":1,"gtype":"donut","title":"","label":"","format":"","min":"-20","max":"4000","colors":["#00b500","#e6e600","#ca3838"],"seg1":"200","seg2":"212","x":1030,"y":560,"wires":[]},{"id":"b3b00010.4f685","type":"mqtt in","z":"806ca4b7.f7d72","name":"Kiln CJ temperature","topic":"home/kiln/cjtemp","qos":"0","datatype":"auto","broker":"88e70c38.732038","x":170,"y":580,"wires":[["4dc302fd.723b0c"]]},{"id":"177e7370.d97e35","type":"ui_gauge","z":"806ca4b7.f7d72","name":"Kiln CJ temperature","group":"d30f6c0a.6e29e8","order":74,"width":1,"height":1,"gtype":"donut","title":"","label":"","format":"","min":"-20","max":"120","colors":["#0000ff","#00ff00","#ca3838"],"seg1":"60","seg2":"90","x":1040,"y":640,"wires":[]},{"id":"5dfac61b.bb8d98","type":"ui_text","z":"806ca4b7.f7d72","group":"d30f6c0a.6e29e8","order":48,"width":5,"height":1,"name":"Living room temp","label":"Living Room","format":"<font size=\"5\">{{msg.payload}} &deg;F</font>","layout":"row-spread","x":1030,"y":160,"wires":[]},{"id":"22716efb.8a9fba","type":"ui_text","z":"806ca4b7.f7d72","group":"d30f6c0a.6e29e8","order":51,"width":5,"height":1,"name":"Ham shack","label":"Ham shack","format":"<font size=\"5\">{{msg.payload}} &deg;F</font>","layout":"row-spread","x":1010,"y":320,"wires":[]},{"id":"fbc3941b.b42258","type":"ui_text","z":"806ca4b7.f7d72","group":"d30f6c0a.6e29e8","order":69,"width":5,"height":1,"name":"Kiln","label":"Kiln","format":"<font size=\"5\">{{msg.payload}} &deg;F</font>","layout":"row-spread","x":990,"y":520,"wires":[]},{"id":"5f2ebe5f.13822","type":"ui_text","z":"806ca4b7.f7d72","group":"d30f6c0a.6e29e8","order":73,"width":5,"height":1,"name":"Kiln CJ","label":"Kiln CJ","format":"<font size=\"5\">{{msg.payload}} &deg;F</font>","layout":"row-spread","x":990,"y":600,"wires":[]},{"id":"735073c5.db417c","type":"mqtt in","z":"806ca4b7.f7d72","name":"Lab Humidity","topic":"home/lab/humidity1","qos":"0","datatype":"auto","broker":"88e70c38.732038","x":150,"y":420,"wires":[["492817c6.695a38","e6c51807.0d63b"]]},{"id":"492817c6.695a38","type":"ui_text","z":"806ca4b7.f7d72","group":"d30f6c0a.6e29e8","order":60,"width":5,"height":1,"name":"Ham shack humidity","label":"Ham shack humidity","format":"<font size=\"5\">{{msg.payload}}%</font>","layout":"row-spread","x":440,"y":420,"wires":[]},{"id":"7601c83a.d1d07","type":"function","z":"806ca4b7.f7d72","name":"Label source","func":"return {\n    topic : \"ham shack\",\n    payload : msg.payload \n};\n","outputs":1,"noerr":0,"initialize":"","finalize":"","x":430,"y":300,"wires":[["22716efb.8a9fba","9d966841.9a1a9","689c264e.d6cac8"]]},{"id":"4dc302fd.723b0c","type":"function","z":"806ca4b7.f7d72","name":"Label source","func":"return {\n    topic : \"kiln cj\",\n    payload : msg.payload \n};\n","outputs":1,"noerr":0,"initialize":"","finalize":"","x":410,"y":580,"wires":[["5f2ebe5f.13822","177e7370.d97e35","d5fe5b1c.bca0d8"]]},{"id":"f9dc5287.bcfbb","type":"function","z":"806ca4b7.f7d72","name":"Label source","func":"return {\n    topic : \"kiln\",\n    payload : msg.payload \n};\n","outputs":1,"noerr":0,"initialize":"","finalize":"","x":410,"y":520,"wires":[["fbc3941b.b42258","fa55c6cb.3946a8","d5fe5b1c.bca0d8"]]},{"id":"294a0faf.ba9bc","type":"function","z":"806ca4b7.f7d72","name":"Label source","func":"return {\n    topic : \"living room\",\n    payload : msg.payload \n};\n","outputs":1,"noerr":0,"initialize":"","finalize":"","x":430,"y":180,"wires":[["5dfac61b.bb8d98","8743b0d7.d822e8","689c264e.d6cac8"]]},{"id":"f2e642f7.88e728","type":"mqtt in","z":"806ca4b7.f7d72","name":"Bedroom temperature","topic":"office/temperature1","qos":"0","datatype":"auto","broker":"88e70c38.732038","x":180,"y":240,"wires":[["b11ee46f.ba23a"]]},{"id":"b11ee46f.ba23a","type":"function","z":"806ca4b7.f7d72","name":"Label source","func":"return {\n    topic : \"bedroom\",\n    payload : msg.payload \n};\n","outputs":1,"noerr":0,"initialize":"","finalize":"","x":430,"y":240,"wires":[["4268a0ba.bd1ec8","db95359c.cff4e","689c264e.d6cac8"]]},{"id":"4268a0ba.bd1ec8","type":"ui_text","z":"806ca4b7.f7d72","group":"d30f6c0a.6e29e8","order":57,"width":5,"height":1,"name":"Bedroom temp","label":"Bedroom","format":"<font size=\"5\">{{msg.payload}} &deg;F</font>","layout":"row-spread","x":1020,"y":240,"wires":[]},{"id":"db95359c.cff4e","type":"ui_gauge","z":"806ca4b7.f7d72","name":"Bedroom temperature","group":"d30f6c0a.6e29e8","order":58,"width":1,"height":1,"gtype":"donut","title":"","label":"","format":"","min":"42","max":"102","colors":["#0000ff","#00ff00","#ca3838"],"seg1":"68","seg2":"80","x":1040,"y":280,"wires":[]},{"id":"fda01069.c09fa","type":"link in","z":"806ca4b7.f7d72","name":"Forecast","links":["3b5ab840.ea5118","eb2436f6.92c6c8","290fe4c0.1aa3ac"],"x":815,"y":80,"wires":[["ea0fe65f.13f848"]],"outputLabels":["Current temp"]},{"id":"6d758e1.7baf17","type":"inject","z":"ffed9118.13547","name":"","props":[{"p":"payload","v":"","vt":"date"},{"p":"topic","v":"","vt":"string"}],"repeat":"","crontab":"","once":false,"onceDelay":0.1,"topic":"","payload":"","payloadType":"date","x":300,"y":240,"wires":[["c5fef6f4.928628"]]},{"id":"c5fef6f4.928628","type":"ui_template","z":"ffed9118.13547","group":"d30f6c0a.6e29e8","name":"Analog clock","order":9,"width":15,"height":13,"format":"<!-- https://css-tricks.com/css3-clock/ -->\n<style>\n    #clock {\n        position: relative;\n        width: 600px;\n        height: 600px;\n        margin: 20px 0 0 8px;\n        background: url(/CSS3Clock/images/clockface.jpg);\n        background-repeat: no-repeat;\n        list-style: none;\n    }\n    \n    #sec, #min, #hour {\n        position: absolute;\n        width: 30px;\n        height: 600px;\n        top: 0px;\n        left: 285px;\n    }\n    \n    #sec {\n        background: url(/CSS3Clock/images/sechand.png);\n        z-index: 3;\n    }\n       \n    #min {\n        background: url(/CSS3Clock/images/minhand.png);\n        z-index: 2;\n    }\n       \n    #hour {\n        background: url(/CSS3Clock/images/hourhand.png);\n        z-index: 1;\n    }\n</style>\n\n<ul id=\"clock\">\t\n    <li id=\"sec\"></li>\n    <li id=\"hour\"></li>\n    <li id=\"min\"></li>\n</ul>\n\n<script>\n    $(function() {\n \n        setInterval( function() {\n            var seconds = new Date().getSeconds();\n            var sdegree = seconds * 6;\n            var srotate = \"rotate(\" + sdegree + \"deg)\";\n            \n            $(\"#sec\").css({ \"transform\": srotate });\n          \n        }, 1000 );\n        \n        setInterval( function() {\n            var hours = new Date().getHours();\n            var mins = new Date().getMinutes();\n            var hdegree = hours * 30 + (mins / 2);\n            var hrotate = \"rotate(\" + hdegree + \"deg)\";\n            \n            $(\"#hour\").css({ \"transform\": hrotate});\n          \n        }, 1000 );\n        \n        setInterval( function() {\n            var mins = new Date().getMinutes();\n            var mdegree = mins * 6;\n            var mrotate = \"rotate(\" + mdegree + \"deg)\";\n            \n            $(\"#min\").css({ \"transform\" : mrotate });\n          \n        }, 1000 );\n \n});\n</script>","storeOutMessages":true,"fwdInMessages":true,"resendOnRefresh":false,"templateScope":"local","x":490,"y":240,"wires":[[]]},{"id":"37f3c228.f9f5ae","type":"ui_text","z":"1539426a.37d8ce","group":"d30f6c0a.6e29e8","order":36,"width":3,"height":1,"name":"Forecast temp 5","label":"<font size=\"2\" color=\"cyan\">{{msg.label}}</font>","format":"<font size=\"6\">{{msg.payload}} &deg;F</font>","layout":"col-center","x":1280,"y":300,"wires":[]},{"id":"9779ce82.f11a6","type":"ui_text","z":"1539426a.37d8ce","group":"d30f6c0a.6e29e8","order":38,"width":3,"height":1,"name":"Forecast temp 6","label":"<font size=\"2\" color=\"cyan\">{{msg.label}}</font>","format":"<font size=\"6\">{{msg.payload}} &deg;F</font>","layout":"col-center","x":1280,"y":340,"wires":[]},{"id":"7f8a3141.d7def","type":"ui_text","z":"1539426a.37d8ce","group":"d30f6c0a.6e29e8","order":39,"width":3,"height":1,"name":"Forecast temp 7","label":"<font size=\"2\" color=\"cyan\">{{msg.label}}</font>","format":"<font size=\"6\">{{msg.payload}} &deg;F</font>","layout":"col-center","x":1280,"y":380,"wires":[]},{"id":"475e6139.5a6da","type":"ui_template","z":"1539426a.37d8ce","group":"d30f6c0a.6e29e8","name":"icon 5","order":43,"width":3,"height":3,"format":"<img src={{msg.payload}} />","storeOutMessages":true,"fwdInMessages":true,"resendOnRefresh":true,"templateScope":"local","x":1190,"y":620,"wires":[[]]},{"id":"a41209be.45ee18","type":"ui_template","z":"1539426a.37d8ce","group":"d30f6c0a.6e29e8","name":"icon 6","order":45,"width":3,"height":3,"format":"<img src={{msg.payload}} />","storeOutMessages":true,"fwdInMessages":true,"resendOnRefresh":true,"templateScope":"local","x":1190,"y":660,"wires":[[]]},{"id":"c97ba6fa.09aee","type":"ui_template","z":"1539426a.37d8ce","group":"d30f6c0a.6e29e8","name":"icon 7","order":46,"width":3,"height":3,"format":"<img src={{msg.payload}} />","storeOutMessages":true,"fwdInMessages":true,"resendOnRefresh":true,"templateScope":"local","x":1190,"y":700,"wires":[[]]},{"id":"f62ca12b.19dde","type":"function","z":"9261508f.204d7","name":"Extract detailed forecast","func":"let p = env.get(\"PERIOD\");\nif (typeof msg.payload.properties.periods[p].detailedForecast === \"undefined\")\n{\n    // usually happens if the weather API returns an error\n    return null; // don't post any message\n}\nvar forecast = msg.payload.properties.periods[p].detailedForecast;\nif (forecast.length > 300)\n{\n    forecast = forecast.substring(0, 300) +'...';\n}\nvar label = msg.payload.properties.periods[p].name;\nmsg.label = label;\nmsg.payload = forecast;\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","x":190,"y":80,"wires":[[]]},{"id":"3aa67860.5041e","type":"ui_text","z":"1539426a.37d8ce","group":"d30f6c0a.6e29e8","order":11,"width":15,"height":2,"name":"Detailed forecast 1","label":"<font size=\"4\" color=\"cyan\">{{msg.label}}</font>","format":"{{msg.payload}}","layout":"col-center","x":1290,"y":60,"wires":[]},{"id":"6f517cd2.12d9a4","type":"ui_text","z":"1539426a.37d8ce","group":"d30f6c0a.6e29e8","order":1,"width":15,"height":1,"name":"Forecast time","label":"<font size=\"6\" color=\"#ff9900\">Brooklyn Forecast</font>","format":"<font size=\"5\" color=\"#ff9900\">Updated {{msg.payload}}</font>","layout":"row-spread","x":1200,"y":780,"wires":[]},{"id":"d5fe5b1c.bca0d8","type":"ui_chart","z":"806ca4b7.f7d72","name":"Kiln graph","group":"e4ef27d5.399958","order":1,"width":0,"height":0,"label":"Kiln","chartType":"line","legend":"true","xformat":"HH:mm","interpolate":"linear","nodata":"Waiting for data...","dot":false,"ymin":"","ymax":"","removeOlder":"24","removeOlderPoints":"1000000","removeOlderUnit":"3600","cutout":0,"useOneColor":false,"useUTC":false,"colors":["#ffffff","#ffff80","#ff7f0e","#2ca02c","#00ffff","#d62728","#ff9896","#9467bd","#c5b0d5"],"useOldStyle":false,"outputs":1,"x":1010,"y":480,"wires":[[]]},{"id":"1a38b046.60ec3","type":"function","z":"cfb226a0.12274","name":"Format time","func":"var d = new Date(msg.payload);\nconst options = {\n hour12 : true,\n hour:  \"numeric\",\n minute: \"2-digit\"\n};\nvar timeString = d.toLocaleTimeString(\"en-US\",options);\nnode.status({fill:\"green\",shape:\"ring\",text: timeString});\nreturn { payload : timeString };","outputs":1,"noerr":0,"initialize":"","finalize":"","x":130,"y":80,"wires":[[]]},{"id":"93ae98d6.f6f238","type":"function","z":"97af54d5.455cd","name":"Get forecast temperature","func":"let p = env.get(\"PERIOD\");\nif (typeof msg.payload.properties.periods[p].temperature === \"undefined\")\n{\n    // usually happens if the weather API returns an error\n    return null; // don't post any message\n}\nvar temperature = msg.payload.properties.periods[p].temperature;\nvar label = msg.payload.properties.periods[p].name;\nmsg.label = label;\nmsg.payload = temperature;\nreturn msg;\n\n","outputs":1,"noerr":0,"initialize":"","finalize":"","x":190,"y":80,"wires":[[]]},{"id":"89033bf2.46eb3","type":"ui_text","z":"1539426a.37d8ce","group":"d30f6c0a.6e29e8","order":15,"width":3,"height":1,"name":"Forecast temp 1","label":"<font size=\"2\" color=\"cyan\">{{msg.label}}</font>","format":"<font size=\"6\">{{msg.payload}} &deg;F</font>","layout":"col-center","x":1280,"y":140,"wires":[]},{"id":"e86f2098.c4dae","type":"subflow:9261508f.204d7","z":"1539426a.37d8ce","name":"Get forecast 1","env":[{"name":"PERIOD","value":"1","type":"num"}],"x":1000,"y":60,"wires":[["3aa67860.5041e"]]},{"id":"bdcf245d.94c0a","type":"subflow:9261508f.204d7","z":"1539426a.37d8ce","name":"Get forecast 0","env":[{"name":"PERIOD","value":"0","type":"num"}],"x":1000,"y":20,"wires":[["1f2abfc6.92c1f8"]]},{"id":"e1a3f843.7a0408","type":"subflow:97af54d5.455cd","z":"1539426a.37d8ce","name":"Get forecast temperature 0","env":[{"name":"PERIOD","value":"0","type":"num"}],"x":1040,"y":100,"wires":[["fd19e7b6.f4321"]]},{"id":"f182166a.4ee9f8","type":"subflow:97af54d5.455cd","z":"1539426a.37d8ce","name":"Get forecast temperature 1","env":[{"name":"PERIOD","value":"1","type":"num"}],"x":1040,"y":140,"wires":[["89033bf2.46eb3"]]},{"id":"8fb48999.d5cd7","type":"subflow:97af54d5.455cd","z":"1539426a.37d8ce","name":"Get forecast temperature 2","env":[{"name":"PERIOD","value":"2","type":"num"}],"x":1040,"y":180,"wires":[["1aec96c4.aac819"]]},{"id":"9b5cebb7.434838","type":"subflow:97af54d5.455cd","z":"1539426a.37d8ce","name":"Get forecast temperaure 3","env":[{"name":"PERIOD","value":"3","type":"num"}],"x":1040,"y":220,"wires":[["16bb1da4.910082"]]},{"id":"f41f1297.df7a78","type":"subflow:97af54d5.455cd","z":"1539426a.37d8ce","name":"Get forecast temperature 4","env":[{"name":"PERIOD","value":"4","type":"num"}],"x":1040,"y":260,"wires":[["1dab5252.0712ee"]]},{"id":"179a7f30.7a9fc9","type":"subflow:97af54d5.455cd","z":"1539426a.37d8ce","name":"Get forecast temperature 5","env":[{"name":"PERIOD","value":"5","type":"num"}],"x":1040,"y":300,"wires":[["37f3c228.f9f5ae"]]},{"id":"195b6ee3.562a69","type":"subflow:97af54d5.455cd","z":"1539426a.37d8ce","name":"Get forecast temperature 6","env":[{"name":"PERIOD","value":"6","type":"num"}],"x":1040,"y":340,"wires":[["9779ce82.f11a6"]]},{"id":"9b0d680a.3fd7b","type":"subflow:97af54d5.455cd","z":"1539426a.37d8ce","name":"Get forecast temperature 7","env":[{"name":"PERIOD","value":"7","type":"num"}],"x":1040,"y":380,"wires":[["7f8a3141.d7def"]]},{"id":"fd19e7b6.f4321","type":"ui_text","z":"1539426a.37d8ce","group":"d30f6c0a.6e29e8","order":14,"width":3,"height":1,"name":"Forecast temp 0","label":"<font size=\"2\" color=\"cyan\">{{msg.label}}</font>","format":"<font size=\"6\">{{msg.payload}} &deg;F</font>","layout":"col-center","x":1280,"y":100,"wires":[]},{"id":"3b9ab9bd.f457a6","type":"function","z":"ffed9118.13547","name":"Get date","func":"d = new Date();\nconst options = {\n month:\"long\",\n day:\"numeric\"\n};\nconst options2 = {\n weekday: \"long\"   \n};\nmsg.payload = d.toLocaleDateString(\"en-US\",options2) + \" \" + \n d.toLocaleDateString(\"en-US\",options);\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","x":490,"y":340,"wires":[["370c74c4.a52774"]]},{"id":"5424c2cf.4e3a6c","type":"inject","z":"ffed9118.13547","name":"At midnight","props":[{"p":"payload"},{"p":"topic","vt":"str"}],"repeat":"","crontab":"00 00 * * *","once":false,"onceDelay":0.1,"topic":"","payload":"","payloadType":"date","x":310,"y":340,"wires":[["3b9ab9bd.f457a6"]]},{"id":"370c74c4.a52774","type":"ui_text","z":"ffed9118.13547","group":"d30f6c0a.6e29e8","order":2,"width":14,"height":1,"name":"date","label":"","format":"<font size=\"8\" color=\"yellow\">{{msg.payload}}</font>","layout":"row-center","x":650,"y":340,"wires":[]},{"id":"5b8c6634.a6ad7","type":"subflow:3c56223b.56b5c6","z":"1539426a.37d8ce","name":"Get weather icon 0","env":[{"name":"PERIOD","value":"0","type":"num"}],"x":1010,"y":420,"wires":[["42810ce4.251cac"]]},{"id":"8be529e8.2ede78","type":"subflow:3c56223b.56b5c6","z":"1539426a.37d8ce","name":"Get weather icon 1","env":[{"name":"PERIOD","value":"1","type":"num"}],"x":1010,"y":460,"wires":[["c8ce02fd.818f6"]]},{"id":"f4134c73.cd384","type":"subflow:3c56223b.56b5c6","z":"1539426a.37d8ce","name":"Get weather icon 2","env":[{"name":"PERIOD","value":"2","type":"num"}],"x":1010,"y":500,"wires":[["8a7df207.b53ce"]]},{"id":"65b19a22.4e3454","type":"subflow:3c56223b.56b5c6","z":"1539426a.37d8ce","name":"Get weather icon 3","env":[{"name":"PERIOD","value":"3","type":"num"}],"x":1010,"y":540,"wires":[["d87fe56b.65022"]]},{"id":"3ac999cd.1ec60e","type":"subflow:3c56223b.56b5c6","z":"1539426a.37d8ce","name":"Get weather icon 4","env":[{"name":"PERIOD","value":"4","type":"num"}],"x":1010,"y":580,"wires":[["6c1fc848.036f4"]]},{"id":"3c8b5efb.0813ea","type":"subflow:3c56223b.56b5c6","z":"1539426a.37d8ce","name":"Get weather icon 6","env":[{"name":"PERIOD","value":"6","type":"num"}],"x":1010,"y":660,"wires":[["a41209be.45ee18"]]},{"id":"36ccf365.f8e514","type":"subflow:3c56223b.56b5c6","z":"1539426a.37d8ce","name":"Get weather icon 5","env":[{"name":"PERIOD","value":"5","type":"num"}],"x":1010,"y":620,"wires":[["475e6139.5a6da"]]},{"id":"7d8a1215.880de4","type":"subflow:3c56223b.56b5c6","z":"1539426a.37d8ce","name":"Get weather icon 7","env":[{"name":"PERIOD","value":"7","type":"num"}],"x":1010,"y":700,"wires":[["c97ba6fa.09aee"]]},{"id":"e6c51807.0d63b","type":"ui_gauge","z":"806ca4b7.f7d72","name":"Ham shack humidity","group":"d30f6c0a.6e29e8","order":61,"width":1,"height":1,"gtype":"donut","title":"","label":"","format":"","min":0,"max":"100","colors":["#ffff00","#008000","#ffff00"],"seg1":"30","seg2":"50","x":440,"y":460,"wires":[]},{"id":"8638e577.29d458","type":"subflow:cfb226a0.12274","z":"1539426a.37d8ce","name":"","env":[],"x":990,"y":780,"wires":[["6f517cd2.12d9a4"]]},{"id":"32b75104.0e629e","type":"function","z":"12cba20c.5228de","name":"Check if message valid","func":"/*\nThis function checks the decoded JSON message to see if it \ncontains the expected payload type. If so this is considered \na good message, if not it is a bad message. A bad message\nnormally occurs if there is an error on the NWS API.\n\nThis function has two outputs, msg and retry.\n\nIf bad message then return null (do nothing) on output 1 and\nreturn a message intended to trigger a retry on output 2. \nSend this retry signal a maximum of 3 times. The retry counter\nis reset when a good message is received.\n\nIf good message then reset the retry counter and return the \nfull message (send it on) on output 1. Return null on output 2.\n\n*/\n\nif (msg.payload.type !== \"Feature\")\n{\n    // Bad message\n    node.status({fill:\"red\",shape:\"dot\",text:\"retry\"});\n    var retries = flow.get('retries') || 0;\n    retries++;\n    flow.set('retries', retries);\n    if (retries <= 3)\n    {\n        node.warn(\"Weather API returned an error, retry \" + retries);\n        return [null, { payload: \"retry\" }];\n    }\n    node.warn(\"Weather API returned an error, retries exceeded\");\n    return [null, null]; // abort and don't post any message\n}\n\n// good message received so set retries to zero\nflow.set('retries', 0);\nnode.status({fill:\"green\",shape:\"dot\",text:\"OK\"});\n\n// return the full message on output 1\n// nothing on output 2\nreturn [msg, null];","outputs":2,"noerr":0,"initialize":"","finalize":"","x":630,"y":80,"wires":[[],[]],"outputLabels":["full message","retry"]},{"id":"ea0fe65f.13f848","type":"ui_chart","z":"806ca4b7.f7d72","name":"Outside temperature graph","group":"ef92bf54.f130d","order":1,"width":0,"height":0,"label":"Outside temperature","chartType":"line","legend":"false","xformat":"HH:mm","interpolate":"linear","nodata":"Waiting for data...","dot":false,"ymin":"","ymax":"","removeOlder":"24","removeOlderPoints":"100000","removeOlderUnit":"3600","cutout":0,"useOneColor":false,"useUTC":false,"colors":["#1f77b4","#aec7e8","#ff7f0e","#2ca02c","#98df8a","#d62728","#ff9896","#9467bd","#c5b0d5"],"useOldStyle":false,"outputs":1,"x":1060,"y":80,"wires":[[]]},{"id":"689c264e.d6cac8","type":"ui_chart","z":"806ca4b7.f7d72","name":"Inside temperature graph","group":"3e54635b.a9baec","order":1,"width":0,"height":0,"label":"Inside temperatures","chartType":"line","legend":"true","xformat":"HH:mm","interpolate":"linear","nodata":"Waiting for data...","dot":false,"ymin":"","ymax":"","removeOlder":"24","removeOlderPoints":"100000","removeOlderUnit":"3600","cutout":0,"useOneColor":false,"useUTC":false,"colors":["#1f77b4","#aec7e8","#ff7f0e","#2ca02c","#98df8a","#d62728","#ff9896","#9467bd","#c5b0d5"],"useOldStyle":false,"outputs":1,"x":1050,"y":120,"wires":[[]]},{"id":"dc4a7ee5.6934","type":"function","z":"d6b5a0d5.208678","name":"Label source","func":"return {\n    topic : \"outside\",\n    payload : msg.payload \n};\n","outputs":1,"noerr":0,"initialize":"","finalize":"","x":1090,"y":140,"wires":[["94057415.976b3","290fe4c0.1aa3ac"]]},{"id":"94057415.976b3","type":"ui_text","z":"d6b5a0d5.208678","group":"d30f6c0a.6e29e8","order":5,"width":5,"height":1,"name":"Current temp","label":"","format":"<font size=\"8\" color=\"yellow\">{{msg.payload}} &deg;F</font>","layout":"row-center","x":1270,"y":140,"wires":[]},{"id":"290fe4c0.1aa3ac","type":"link out","z":"d6b5a0d5.208678","name":"Current temp","links":["fda01069.c09fa"],"x":1215,"y":100,"wires":[],"inputLabels":["To history graph"]},{"id":"9c8cf181.dd976","type":"exec","z":"d6b5a0d5.208678","command":"curl -X GET \"https://api.weather.gov/stations/KMSN/observations/latest\" -H  \"accept: application/geo+json\"","addpay":false,"append":"","useSpawn":"false","timer":"","oldrc":false,"name":"Get current observations","x":210,"y":120,"wires":[["3285dd25.19d61a"],[],[]]},{"id":"bb8aafc7.0d2bd","type":"function","z":"d6b5a0d5.208678","name":"Extract current temp","func":"if (typeof msg.payload.properties.temperature.value === \"undefined\")\n{\n    // usually happens if the weather API returns an error\n    return null; // don't post any message\n}\nvar t = msg.payload.properties.temperature.value;\nif (isNaN(t))\n{\n        // if t is not a number\n        return null;\n}\nreturn { payload : t };\n","outputs":1,"noerr":0,"initialize":"","finalize":"","x":700,"y":140,"wires":[["347a921.f1a626e"]]},{"id":"347a921.f1a626e","type":"unit-converter","z":"d6b5a0d5.208678","category":"temperature","inputUnit":"C","outputUnit":"F","inputField":"payload","outputField":"payload","inputFieldType":"msg","outputFieldType":"msg","roundOutputField":true,"outputFieldDecimals":"1","name":"Convert to deg F","x":910,"y":140,"wires":[["dc4a7ee5.6934"]]},{"id":"2b557844.b2b298","type":"function","z":"d6b5a0d5.208678","name":"Extract humidity","func":"if (typeof msg.payload.properties.relativeHumidity.value === \"undefined\")\n{\n    // usually happens if the weather API returns an error\n    return null; // don't post any message\n}\nreturn { payload : msg.payload.properties.relativeHumidity.value };\n","outputs":1,"noerr":0,"initialize":"","finalize":"","x":680,"y":180,"wires":[["d702ff21.2dc5d"]]},{"id":"77e3fb89.7acad4","type":"ui_text","z":"d6b5a0d5.208678","group":"d30f6c0a.6e29e8","order":6,"width":2,"height":1,"name":"Current humidity","label":"","format":"{{msg.payload}}% humidity","layout":"row-left","x":1290,"y":180,"wires":[]},{"id":"2a01f70f.47b678","type":"function","z":"d6b5a0d5.208678","name":"Extract description","func":"if (typeof msg.payload.properties.textDescription === \"undefined\")\n{\n    // usually happens if the weather API returns an error\n    return null; // don't post any message\n}\nreturn { payload : msg.payload.properties.textDescription };\n","outputs":1,"noerr":0,"initialize":"","finalize":"","x":690,"y":220,"wires":[["79187dc4.e4f30c"]]},{"id":"79187dc4.e4f30c","type":"ui_text","z":"d6b5a0d5.208678","group":"d30f6c0a.6e29e8","order":7,"width":3,"height":1,"name":"Current conditions","label":"","format":"{{msg.payload}}","layout":"row-left","x":1290,"y":220,"wires":[]},{"id":"d702ff21.2dc5d","type":"range","z":"d6b5a0d5.208678","minin":"0","maxin":"100","minout":"0","maxout":"100","action":"scale","round":true,"property":"payload","name":"Integer","x":840,"y":180,"wires":[["77e3fb89.7acad4"]]},{"id":"7b6a61.2a40c5a","type":"ui_text","z":"d6b5a0d5.208678","group":"d30f6c0a.6e29e8","order":4,"width":4,"height":1,"name":"Observation time","label":"<font size=\"5\">Madison</font>","format":"<font size=\"4\">at {{msg.payload}}</font>","layout":"col-center","x":1290,"y":260,"wires":[]},{"id":"99290475.714f68","type":"function","z":"d6b5a0d5.208678","name":"Extract observation timestamp","func":"if (typeof msg.payload.properties.timestamp === \"undefined\")\n{\n    // usually happens if the weather API returns an error\n    return null; // don't post any message\n}\nvar t = msg.payload.properties.timestamp;\nreturn { payload : t };","outputs":1,"noerr":0,"initialize":"","finalize":"","x":730,"y":260,"wires":[["e8e78666.b23bb"]]},{"id":"e8e78666.b23bb","type":"subflow:cfb226a0.12274","z":"d6b5a0d5.208678","name":"","env":[],"x":950,"y":260,"wires":[["7b6a61.2a40c5a"]]},{"id":"fc09daed.98134","type":"inject","z":"d6b5a0d5.208678","name":"timer","props":[{"p":"payload"}],"repeat":"600","crontab":"","once":true,"onceDelay":0.1,"topic":"","payload":"","payloadType":"date","x":90,"y":60,"wires":[["9c8cf181.dd976"]]},{"id":"e15b6ca2.1bd0c","type":"exec","z":"1528894b.73fa5f","command":"curl -X GET \"https://api.weather.gov/alerts/active/zone/WIZ068\" -H  \"accept: application/geo+json\"","addpay":false,"append":"","useSpawn":"false","timer":"","oldrc":false,"name":"Get alerts for Green County","x":360,"y":280,"wires":[["85f98178.9b7ab8"],[],[]]},{"id":"33ac8cdf.ac1074","type":"inject","z":"1528894b.73fa5f","name":"timer","props":[{"p":"payload"}],"repeat":"120","crontab":"","once":true,"onceDelay":0.1,"topic":"","payload":"","payloadType":"date","x":80,"y":160,"wires":[["9164cbc6.10b138","2159b91e.c79886","f41adb1.2c369a8"]]},{"id":"83e8f5b0.f59bf8","type":"json","z":"c44de0cd.3d696","name":"JSON to object 3","property":"payload","action":"","pretty":false,"x":190,"y":80,"wires":[["79690265.fd73ec"]]},{"id":"5b0326bb.59ac88","type":"function","z":"342e347.23b064c","name":"Check message","func":"/*\nCheck to see if a previous command node failed.\nIf yes then send no message (null) on output 1 and send a message\non output 2 that is intended to trigger a retry. Do this a \nmaximum of three times using a flow variable to count retries. \nThe retry count is reset in the downstream node that checks for \ngood messages.\n\nIf the command succeeded then pass the message on output 1 and\nsend no message on output 2\n*/\n\nlet s = env.get(\"ERROR_MESSAGE\");\n\n// a null payload means the command failed\n// a \"{\" character is expected as first char for valid JSON\nif ((msg.payload === \"\") ||\n        (msg.payload.charAt(0) !== \"{\"))\n{\n    // error detected\n    node.status({fill:\"red\",shape:\"dot\",text:\"retry\"});\n    var retries = flow.get('retries') || 0;\n    retries++;\n    flow.set('retries', retries);\n    if (retries <= 3)\n    {\n        node.warn(s+ \", retry \" + retries);\n        return [null, { payload: \"retry\" }];\n    }\n    node.warn(s + \", retries exceeded\");\n    return [null, null]; // abort and don't post any message\n}\n\n// message OK\nnode.status({fill:\"green\",shape:\"dot\",text:\"OK\"});\nreturn [msg, null];","outputs":2,"noerr":0,"initialize":"","finalize":"","x":180,"y":100,"wires":[[],[]]},{"id":"45cf4f69.eb4ff8","type":"subflow:342e347.23b064c","z":"1539426a.37d8ce","name":"","env":[{"name":"ERROR_MESSAGE","value":"Get forecast command failed","type":"str"}],"x":310,"y":220,"wires":[["ce251c8.9a0a6e"],["9665542d.e73e2"]]},{"id":"3285dd25.19d61a","type":"subflow:342e347.23b064c","z":"d6b5a0d5.208678","name":"","env":[{"name":"ERROR_MESSAGE","value":"Current observations command failed","type":"str"}],"x":370,"y":200,"wires":[["9db421ba.2cdfc"],["65c0b0f3.1c10c"]]},{"id":"85f98178.9b7ab8","type":"subflow:342e347.23b064c","z":"1528894b.73fa5f","name":"","env":[{"name":"ERROR_MESSAGE","value":"Alert exec command failed","type":"str"}],"x":670,"y":240,"wires":[["218ff46c.34e204"],[]]},{"id":"d58d9114.5a1808","type":"mqtt in","z":"806ca4b7.f7d72","name":"Back room temperature","topic":"home/backroom/temperature1","qos":"0","datatype":"auto","broker":"88e70c38.732038","x":180,"y":360,"wires":[["608ce8cd.d0a51"]]},{"id":"608ce8cd.d0a51","type":"function","z":"806ca4b7.f7d72","name":"Label source","func":"return {\n    topic : \"back room\",\n    payload : msg.payload \n};\n","outputs":1,"noerr":0,"initialize":"","finalize":"","x":410,"y":360,"wires":[["689c264e.d6cac8","2848dfab.1f70f8","70b620be.06f91"]]},{"id":"2848dfab.1f70f8","type":"ui_text","z":"806ca4b7.f7d72","group":"d30f6c0a.6e29e8","order":66,"width":5,"height":1,"name":"Back room temp","label":"Back Room","format":"<font size=\"5\">{{msg.payload}} &deg;F</font>","layout":"row-spread","x":1020,"y":400,"wires":[]},{"id":"70b620be.06f91","type":"ui_gauge","z":"806ca4b7.f7d72","name":"Back room temperature","group":"d30f6c0a.6e29e8","order":67,"width":1,"height":1,"gtype":"donut","title":"","label":"","format":"","min":"42","max":"102","colors":["#0000ff","#00ff00","#ca3838"],"seg1":"68","seg2":"80","x":1050,"y":440,"wires":[]},{"id":"9665542d.e73e2","type":"delay","z":"1539426a.37d8ce","name":"Retry delay","pauseType":"delay","timeout":"1","timeoutUnits":"minutes","rate":"1","nbRateUnits":"1","rateUnits":"second","randomFirst":"1","randomLast":"5","randomUnits":"seconds","drop":false,"x":150,"y":380,"wires":[["daa2bc3c.12f73"]]},{"id":"96eae0db.364c6","type":"exec","z":"1528894b.73fa5f","command":"curl -X GET \"https://api.weather.gov/alerts/active/zone/WIZ063\" -H  \"accept: application/geo+json\"","addpay":false,"append":"","useSpawn":"false","timer":"","oldrc":false,"name":"Get alerts for Dane County","x":360,"y":220,"wires":[["85f98178.9b7ab8"],[],[]]},{"id":"f41adb1.2c369a8","type":"exec","z":"1528894b.73fa5f","command":"curl -X GET \"https://api.weather.gov/alerts/active/zone/WIZ069\" -H  \"accept: application/geo+json\"","addpay":false,"append":"","useSpawn":"false","timer":"","oldrc":false,"name":"Get alerts for Rock County","x":360,"y":160,"wires":[["85f98178.9b7ab8"],[],[]]},{"id":"9164cbc6.10b138","type":"delay","z":"1528894b.73fa5f","name":"","pauseType":"delay","timeout":"30","timeoutUnits":"seconds","rate":"1","nbRateUnits":"1","rateUnits":"second","randomFirst":"1","randomLast":"5","randomUnits":"seconds","drop":false,"x":160,"y":220,"wires":[["96eae0db.364c6"]]},{"id":"2159b91e.c79886","type":"delay","z":"1528894b.73fa5f","name":"","pauseType":"delay","timeout":"60","timeoutUnits":"seconds","rate":"1","nbRateUnits":"1","rateUnits":"second","randomFirst":"1","randomLast":"5","randomUnits":"seconds","drop":false,"x":160,"y":280,"wires":[["e15b6ca2.1bd0c"]]},{"id":"79690265.fd73ec","type":"function","z":"c44de0cd.3d696","name":"Check if alert valid","func":"if (msg.payload.type !== \"FeatureCollection\")\n{\n    // if not a valid alert message\n    node.warn(\"Invalid alert message\");\n    return null;\n}\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","x":410,"y":80,"wires":[["ab4087b0.e6191"]]},{"id":"ab4087b0.e6191","type":"function","z":"c44de0cd.3d696","name":"Decode alert","func":"alerts = msg.payload.features.length;\nvar msg2 = {};\n\n\n\nif(alerts === 0)\n{\n    s = msg.payload.title;\n    // capitalize the first letter of the title\n    msg2.title = s.charAt(0).toUpperCase() + s.slice(1);\n    msg2.payload = \"None\";\n}\nelse\n{\n    msg2.title = msg.payload.features[0].properties.areaDesc;\n    msg2.payload =  '<font color=\"red\">' +\n                    msg.payload.features[0].properties.event+\n                    '</font>';\n   \n}\n\nreturn msg2;","outputs":1,"noerr":0,"initialize":"","finalize":"","x":610,"y":80,"wires":[[]]},{"id":"218ff46c.34e204","type":"subflow:c44de0cd.3d696","z":"1528894b.73fa5f","name":"","env":[],"x":900,"y":240,"wires":[["fafd49b4.f60b78"]]},{"id":"fafd49b4.f60b78","type":"ui_text","z":"1528894b.73fa5f","group":"d30f6c0a.6e29e8","order":12,"width":15,"height":2,"name":"Alerts","label":"<font size=\"4\" color=\"cyan\">{{msg.title}}</font>","format":"{{msg.payload}}","layout":"col-center","x":1130,"y":240,"wires":[]},{"id":"a2e1cb97.c6f888","type":"function","z":"1539426a.37d8ce","name":"Check if forecast newer","func":"/*\n Check to see if this forecast is newer than the newest\n previously received.\n \n If it is newer return the full forecast message on output 1, and\n return the update time for this forecast on output 2.\n \n If it is not newer return null on both outputs which will not\n forward any message on (do nothing).\n \n*/\n\nvar d = new Date(msg.payload.properties.updated);\nvar time = d.getTime(); // this is the current forecast update time\nvar prev = context.get('prevTime') || 0; // get previous time\nif (time <= prev)\n{\n    // if this forecast is older or same as the previous\n    // abort and don't update anything\n    node.status({fill:\"red\",shape:\"dot\",text:\"not new\"});\n    return [null, null];\n}\n\n// OK to proceed, this forecast is newer than previous.\nnode.status({fill:\"green\",shape:\"dot\",text:\"newer\"});\n// Update the previous time to this time.\ncontext.set('prevTime', time);\n\n// return the full forecast message on output 1\n// return the forecast update time on output 2\nvar msg2 = { payload: msg.payload.properties.updated };\nreturn [msg, msg2];","outputs":2,"noerr":0,"initialize":"","finalize":"","x":610,"y":380,"wires":[["bdcf245d.94c0a","e86f2098.c4dae","e1a3f843.7a0408","f182166a.4ee9f8","8fb48999.d5cd7","9b5cebb7.434838","f41f1297.df7a78","179a7f30.7a9fc9","195b6ee3.562a69","9b0d680a.3fd7b","5b8c6634.a6ad7","8be529e8.2ede78","f4134c73.cd384","65b19a22.4e3454","3ac999cd.1ec60e","36ccf365.f8e514","3c8b5efb.0813ea","7d8a1215.880de4"],["8638e577.29d458"]]},{"id":"ce251c8.9a0a6e","type":"subflow:12cba20c.5228de","z":"1539426a.37d8ce","name":"","env":[],"x":470,"y":300,"wires":[["a2e1cb97.c6f888"],["9665542d.e73e2"]]},{"id":"9db421ba.2cdfc","type":"subflow:12cba20c.5228de","z":"d6b5a0d5.208678","name":"","x":430,"y":280,"wires":[["bb8aafc7.0d2bd","2b557844.b2b298","2a01f70f.47b678","99290475.714f68"],["65c0b0f3.1c10c"]]},{"id":"65c0b0f3.1c10c","type":"delay","z":"d6b5a0d5.208678","name":"Retry delay","pauseType":"delay","timeout":"1","timeoutUnits":"minutes","rate":"1","nbRateUnits":"1","rateUnits":"second","randomFirst":"1","randomLast":"5","randomUnits":"seconds","drop":false,"x":130,"y":340,"wires":[["9c8cf181.dd976"]]},{"id":"e11afd0e.97949","type":"status","z":"12cba20c.5228de","name":"","scope":null,"x":470,"y":220,"wires":[[]]},{"id":"e01e36a1.6e8158","type":"status","z":"342e347.23b064c","name":"","scope":null,"x":120,"y":320,"wires":[[]]},{"id":"8e2ee7b6.d43ee8","type":"status","z":"cfb226a0.12274","name":"","scope":null,"x":150,"y":260,"wires":[[]]}]
+[
+    {
+        "id": "d6b5a0d5.208678",
+        "type": "tab",
+        "label": "Weather observations",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "1539426a.37d8ce",
+        "type": "tab",
+        "label": "Weather forecast",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "1528894b.73fa5f",
+        "type": "tab",
+        "label": "Weather alerts",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "806ca4b7.f7d72",
+        "type": "tab",
+        "label": "Sensors",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "ffed9118.13547",
+        "type": "tab",
+        "label": "Clock",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "db0601ad.cbffd8",
+        "type": "tab",
+        "label": "Testing",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "9261508f.204d7",
+        "type": "subflow",
+        "name": "Get detailed forecast",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 0,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "f62ca12b.19dde"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 400,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "f62ca12b.19dde",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "PERIOD",
+                "type": "num",
+                "value": ""
+            }
+        ],
+        "color": "#DDAA99"
+    },
+    {
+        "id": "97af54d5.455cd",
+        "type": "subflow",
+        "name": "Get forecast temperature",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 0,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "93ae98d6.f6f238"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 380,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "93ae98d6.f6f238",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "PERIOD",
+                "type": "num",
+                "value": ""
+            }
+        ],
+        "color": "#DDAA99"
+    },
+    {
+        "id": "3c56223b.56b5c6",
+        "type": "subflow",
+        "name": "Get weather icon",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 40,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "46c2805f.796e58"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 360,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "46c2805f.796e58",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "PERIOD",
+                "type": "num",
+                "value": ""
+            }
+        ],
+        "color": "#DDAA99"
+    },
+    {
+        "id": "cfb226a0.12274",
+        "type": "subflow",
+        "name": "Format time",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": -20,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "1a38b046.60ec3"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 400,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "1a38b046.60ec3",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "color": "#DDAA99",
+        "status": {
+            "x": 260,
+            "y": 260,
+            "wires": [
+                {
+                    "id": "8e2ee7b6.d43ee8",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "342e347.23b064c",
+        "type": "subflow",
+        "name": "Check exec result",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 40,
+                "y": 100,
+                "wires": [
+                    {
+                        "id": "5b0326bb.59ac88"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 340,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "5b0326bb.59ac88",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 340,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "5b0326bb.59ac88",
+                        "port": 1
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "ERROR_MESSAGE",
+                "type": "str",
+                "value": "Exec command failed"
+            }
+        ],
+        "color": "#DDAA99",
+        "outputLabels": [
+            "message if OK",
+            "retry"
+        ],
+        "status": {
+            "x": 260,
+            "y": 320,
+            "wires": [
+                {
+                    "id": "e01e36a1.6e8158",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "c44de0cd.3d696",
+        "type": "subflow",
+        "name": "Decode weather alert",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 20,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "83e8f5b0.f59bf8"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 740,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "ab4087b0.e6191",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "color": "#DDAA99"
+    },
+    {
+        "id": "12cba20c.5228de",
+        "type": "subflow",
+        "name": "Convert and verify",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 200,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "999cdaa2.6ea2e"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 840,
+                "y": 60,
+                "wires": [
+                    {
+                        "id": "32b75104.0e629e",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 840,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "32b75104.0e629e",
+                        "port": 1
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "color": "#DDAA99",
+        "outputLabels": [
+            "message",
+            "retry"
+        ],
+        "status": {
+            "x": 640,
+            "y": 220,
+            "wires": [
+                {
+                    "id": "e11afd0e.97949",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "88e70c38.732038",
+        "type": "mqtt-broker",
+        "name": "piserver",
+        "broker": "192.168.2.32",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "f14a494e.897218",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-dark",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "Arial,Arial,Helvetica,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#097479",
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#0eb8c0",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "Arial,Arial,Helvetica,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Home Dashboard",
+            "hideToolbar": "true",
+            "allowSwipe": "true",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 0,
+                "gy": 0,
+                "cx": 0,
+                "cy": 0,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "3e54635b.a9baec",
+        "type": "ui_group",
+        "name": "Inside temperatures",
+        "tab": "bb461d95.632068",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "3eb3d821.25aa68",
+        "type": "tls-config",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "",
+        "servername": "",
+        "verifyservercert": true
+    },
+    {
+        "id": "bb461d95.632068",
+        "type": "ui_tab",
+        "name": "History",
+        "icon": "dashboard",
+        "order": 5,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "5a610406.7a566c",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 6,
+        "width": 12,
+        "height": 1
+    },
+    {
+        "id": "450eb216.dd0954",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 8,
+        "width": 12,
+        "height": 1
+    },
+    {
+        "id": "efdde1ba.6f17e8",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 9,
+        "width": 12,
+        "height": 1
+    },
+    {
+        "id": "c0f3491b.1f5998",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 10,
+        "width": 12,
+        "height": 1
+    },
+    {
+        "id": "7506c0bb.23057",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 11,
+        "width": 12,
+        "height": 1
+    },
+    {
+        "id": "411b4d0a.0472a4",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 12,
+        "width": 12,
+        "height": 1
+    },
+    {
+        "id": "6cfa20c7.8787c",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "367db137.d52446",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 3,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "a453a018.22725",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 5,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "22a4c0b1.fe82e",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "89f27085.19f808",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 8,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "1bedb516.9432d3",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 10,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "d6cd3cb2.f8ef98",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 11,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "d06784f6.16ccc",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 13,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "5e580c97.ee31fc",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 15,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "1731e3a1.d5a924",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 8,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "4e0f1ea3.026a7",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 11,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "eacdcb5f.332fb",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 16,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "97deab20.b5526",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 19,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "dca579f8.6c18a",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 20,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "f7653745.b390f",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 23,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "1f015ad9.11d855",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 28,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "a9cfba8e.37617",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 31,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "bd3a5e5c.7bcba",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 32,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "4f3f2259.8caa6c",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "bc5dbbf7.a4a878",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 3,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "b97f9b24.dd45f",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 5,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "f92f5524.7fe7f8",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "ad8f261a.42fc38",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 8,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "42144d2d.743f8c",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 10,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "7d1b10cf.f1bdc8",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 11,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "a7e8049e.7a07d",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 13,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "54a8436b.d591fc",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 15,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "764186bb.62631",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 8,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "5f4f8b70.2a519c",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 11,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "4c1e1011.1c096",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 16,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "a2b5131a.e12138",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 19,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "4e8fb8f7.4c8ab8",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 20,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "3ff1e3fd.c9a814",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 23,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "7316d7f2.141e4",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 28,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "31c471b2.3a0246",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 31,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "c59aa76b.b8db",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 32,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "d30f6c0a.6e29e8",
+        "type": "ui_group",
+        "name": "Weather",
+        "tab": "b4439fa7.47faf8",
+        "order": 4,
+        "disp": false,
+        "width": "15",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b4439fa7.47faf8",
+        "type": "ui_tab",
+        "name": "Dashboard",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ef92bf54.f130d",
+        "type": "ui_group",
+        "name": "Outside temperature",
+        "tab": "bb461d95.632068",
+        "order": 2,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "e4ef27d5.399958",
+        "type": "ui_group",
+        "name": "Kiln temperatures",
+        "tab": "bb461d95.632068",
+        "order": 3,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "c9ce8888.d73f58",
+        "type": "ui_group",
+        "name": "Alerts",
+        "tab": "",
+        "order": 1,
+        "disp": true,
+        "width": 15,
+        "collapse": false
+    },
+    {
+        "id": "aec35d97de1f3c69",
+        "type": "ui_group",
+        "name": "Time and Date",
+        "tab": "b4439fa7.47faf8",
+        "order": 2,
+        "disp": false,
+        "width": 15,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a60c86aa97d993ca",
+        "type": "ui_group",
+        "name": "Sensors",
+        "tab": "b4439fa7.47faf8",
+        "order": 3,
+        "disp": false,
+        "width": 15,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "65e4334393bd2927",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "aec35d97de1f3c69",
+        "order": 2,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "18532fd3d0f53efc",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "aec35d97de1f3c69",
+        "order": 3,
+        "width": 15,
+        "height": 1
+    },
+    {
+        "id": "06df5ad8aa67db8b",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "aec35d97de1f3c69",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "20e7a838b42ad15d",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "aec35d97de1f3c69",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "f2facf2378dd7124",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "aec35d97de1f3c69",
+        "order": 7,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "30644b2dcc88cf5a",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "aec35d97de1f3c69",
+        "order": 8,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "15ac56f2150138dc",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "aec35d97de1f3c69",
+        "order": 9,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "2fb08cacdaa8cc73",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "aec35d97de1f3c69",
+        "order": 10,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "5a75c599be450ac6",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "aec35d97de1f3c69",
+        "order": 11,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "1be59c5e6919de57",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "aec35d97de1f3c69",
+        "order": 12,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "dbcefaae336eb938",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "aec35d97de1f3c69",
+        "order": 13,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "6f19192118647f81",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "aec35d97de1f3c69",
+        "order": 14,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "5ad175d67b886895",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "aec35d97de1f3c69",
+        "order": 15,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "891148016a71c36b",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "aec35d97de1f3c69",
+        "order": 16,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "864336d11bbcd314",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "aec35d97de1f3c69",
+        "order": 17,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "9ee3136ebb5a25e4",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "a60c86aa97d993ca",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "c1fe726a4295b99a",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "a60c86aa97d993ca",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "8eb3ae87c3c1544b",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "a60c86aa97d993ca",
+        "order": 7,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "26f968dc420a2898",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "a60c86aa97d993ca",
+        "order": 8,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "13a1372328434fc2",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "a60c86aa97d993ca",
+        "order": 11,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "191b4d6cad87b0dc",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "a60c86aa97d993ca",
+        "order": 14,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "fa7693d4ce8b444e",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "a60c86aa97d993ca",
+        "order": 15,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "1d4cf52a9cedb469",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "a60c86aa97d993ca",
+        "order": 18,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "ea06f147447799f5",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "a60c86aa97d993ca",
+        "order": 21,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "8978b14662959289",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "a60c86aa97d993ca",
+        "order": 22,
+        "width": 8,
+        "height": 1
+    },
+    {
+        "id": "b1e8edc86f26acae",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "a60c86aa97d993ca",
+        "order": 25,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "4a2dee8d71d4240f",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "d30f6c0a.6e29e8",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "5cccebdb80dec126",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "d30f6c0a.6e29e8",
+        "order": 12,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "f4b2010d4dfe3248",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "d30f6c0a.6e29e8",
+        "order": 15,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "5fa2c6a11aa636bf",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "d30f6c0a.6e29e8",
+        "order": 18,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "9d85ae371e429c48",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "d30f6c0a.6e29e8",
+        "order": 21,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "b7fed849d3e42374",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "d30f6c0a.6e29e8",
+        "order": 22,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "f69a051fc2c2e3a1",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "d30f6c0a.6e29e8",
+        "order": 23,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "f0368ab9fee1228a",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "d30f6c0a.6e29e8",
+        "order": 24,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "b35fc0e4253c1f9c",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "d30f6c0a.6e29e8",
+        "order": 25,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "f6c79d09d432f9eb",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "d30f6c0a.6e29e8",
+        "order": 28,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "1b360b84ebb1fa0a",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "d30f6c0a.6e29e8",
+        "order": 31,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "8452760708ece2da",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "d30f6c0a.6e29e8",
+        "order": 34,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "0e9bd03bccc9c791",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "d30f6c0a.6e29e8",
+        "order": 37,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "e97c1ab142725822",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "d30f6c0a.6e29e8",
+        "order": 38,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "c2257748b5eeafc6",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "d30f6c0a.6e29e8",
+        "order": 39,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "d3ace33cba68f7a9",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "d30f6c0a.6e29e8",
+        "order": 40,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "d37e92cbab7dc8d2",
+        "type": "ui_spacer",
+        "z": "ffed9118.13547",
+        "name": "spacer",
+        "group": "d30f6c0a.6e29e8",
+        "order": 41,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "3cb216fa.0eeb0a",
+        "type": "inject",
+        "z": "1539426a.37d8ce",
+        "name": "timer",
+        "props": [],
+        "repeat": "900",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "str",
+        "x": 110,
+        "y": 60,
+        "wires": [
+            [
+                "daa2bc3c.12f73"
+            ]
+        ]
+    },
+    {
+        "id": "daa2bc3c.12f73",
+        "type": "exec",
+        "z": "1539426a.37d8ce",
+        "command": "curl -X GET \"https://api.weather.gov/gridpoints/MKX/37,52/forecast?units=us\" -H  \"accept: application/geo+json\"",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Get forecast",
+        "x": 150,
+        "y": 160,
+        "wires": [
+            [
+                "45cf4f69.eb4ff8"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "999cdaa2.6ea2e",
+        "type": "json",
+        "z": "12cba20c.5228de",
+        "name": "JSON to object 2",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 370,
+        "y": 80,
+        "wires": [
+            [
+                "32b75104.0e629e"
+            ]
+        ]
+    },
+    {
+        "id": "1f2abfc6.92c1f8",
+        "type": "ui_text",
+        "z": "1539426a.37d8ce",
+        "group": "d30f6c0a.6e29e8",
+        "order": 7,
+        "width": 15,
+        "height": 2,
+        "name": "Detailed forecast 0",
+        "label": "<font size=\"4\" color=\"cyan\">{{msg.label}}</font>",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 1290,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "1aec96c4.aac819",
+        "type": "ui_text",
+        "z": "1539426a.37d8ce",
+        "group": "d30f6c0a.6e29e8",
+        "order": 13,
+        "width": 3,
+        "height": 1,
+        "name": "Forecast temp 2",
+        "label": "<font size=\"2\" color=\"cyan\">{{msg.label}}</font>",
+        "format": "<font size=\"6\">{{msg.payload}} &deg;F</font>",
+        "layout": "col-center",
+        "x": 1280,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "16bb1da4.910082",
+        "type": "ui_text",
+        "z": "1539426a.37d8ce",
+        "group": "d30f6c0a.6e29e8",
+        "order": 14,
+        "width": 3,
+        "height": 1,
+        "name": "Forecast temp 3",
+        "label": "<font size=\"2\" color=\"cyan\">{{msg.label}}</font>",
+        "format": "<font size=\"6\">{{msg.payload}} &deg;F</font>",
+        "layout": "col-center",
+        "x": 1280,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "1dab5252.0712ee",
+        "type": "ui_text",
+        "z": "1539426a.37d8ce",
+        "group": "d30f6c0a.6e29e8",
+        "order": 26,
+        "width": 3,
+        "height": 1,
+        "name": "Forecast temp 4",
+        "label": "<font size=\"2\" color=\"cyan\">{{msg.label}}</font>",
+        "format": "<font size=\"6\">{{msg.payload}} &deg;F</font>",
+        "layout": "col-center",
+        "x": 1280,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "42810ce4.251cac",
+        "type": "ui_template",
+        "z": "1539426a.37d8ce",
+        "group": "d30f6c0a.6e29e8",
+        "name": "icon 0",
+        "order": 16,
+        "width": 3,
+        "height": 3,
+        "format": "<img src={{msg.payload}} />",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 1190,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "46c2805f.796e58",
+        "type": "function",
+        "z": "3c56223b.56b5c6",
+        "name": "Extract icon",
+        "func": "let p = env.get(\"PERIOD\");\nif (typeof msg.payload.properties.periods[p].icon === \"undefined\")\n{\n    // usually happens if the weather API returns an error\n    return null; // don't post any message\n}\nreturn { payload : msg.payload.properties.periods[p].icon };\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 190,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c8ce02fd.818f6",
+        "type": "ui_template",
+        "z": "1539426a.37d8ce",
+        "group": "d30f6c0a.6e29e8",
+        "name": "icon 1",
+        "order": 17,
+        "width": 3,
+        "height": 3,
+        "format": "<img src={{msg.payload}} />",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 1190,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8a7df207.b53ce",
+        "type": "ui_template",
+        "z": "1539426a.37d8ce",
+        "group": "d30f6c0a.6e29e8",
+        "name": "icon 2",
+        "order": 19,
+        "width": 3,
+        "height": 3,
+        "format": "<img src={{msg.payload}} />",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 1190,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d87fe56b.65022",
+        "type": "ui_template",
+        "z": "1539426a.37d8ce",
+        "group": "d30f6c0a.6e29e8",
+        "name": "icon 3",
+        "order": 20,
+        "width": 3,
+        "height": 3,
+        "format": "<img src={{msg.payload}} />",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 1190,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6c1fc848.036f4",
+        "type": "ui_template",
+        "z": "1539426a.37d8ce",
+        "group": "d30f6c0a.6e29e8",
+        "name": "icon 4",
+        "order": 32,
+        "width": 3,
+        "height": 3,
+        "format": "<img src={{msg.payload}} />",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 1190,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "443f2305.b206c4",
+        "type": "mqtt in",
+        "z": "806ca4b7.f7d72",
+        "name": "Living room temperature",
+        "topic": "home/livingroom/temperature1",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "88e70c38.732038",
+        "x": 190,
+        "y": 180,
+        "wires": [
+            [
+                "294a0faf.ba9bc"
+            ]
+        ]
+    },
+    {
+        "id": "8743b0d7.d822e8",
+        "type": "ui_gauge",
+        "z": "806ca4b7.f7d72",
+        "name": "Living room temperature",
+        "group": "a60c86aa97d993ca",
+        "order": 3,
+        "width": 1,
+        "height": 1,
+        "gtype": "donut",
+        "title": "",
+        "label": "",
+        "format": "",
+        "min": "42",
+        "max": "102",
+        "colors": [
+            "#0000ff",
+            "#00ff00",
+            "#ca3838"
+        ],
+        "seg1": "68",
+        "seg2": "80",
+        "className": "",
+        "x": 1050,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "fce70713.fa622",
+        "type": "mqtt in",
+        "z": "806ca4b7.f7d72",
+        "name": "All",
+        "topic": "#",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "88e70c38.732038",
+        "x": 150,
+        "y": 80,
+        "wires": [
+            [
+                "6afbee16.3a023"
+            ]
+        ]
+    },
+    {
+        "id": "6afbee16.3a023",
+        "type": "debug",
+        "z": "806ca4b7.f7d72",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 370,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "fc8fe227.3beb7",
+        "type": "mqtt in",
+        "z": "806ca4b7.f7d72",
+        "name": "Lab Temperature",
+        "topic": "home/lab/temperature1",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "88e70c38.732038",
+        "x": 160,
+        "y": 300,
+        "wires": [
+            [
+                "7601c83a.d1d07"
+            ]
+        ]
+    },
+    {
+        "id": "9d966841.9a1a9",
+        "type": "ui_gauge",
+        "z": "806ca4b7.f7d72",
+        "name": "Ham shack temperature",
+        "group": "a60c86aa97d993ca",
+        "order": 6,
+        "width": 1,
+        "height": 1,
+        "gtype": "donut",
+        "title": "",
+        "label": "",
+        "format": "",
+        "min": "42",
+        "max": "102",
+        "colors": [
+            "#0000ff",
+            "#00ff00",
+            "#ca3838"
+        ],
+        "seg1": "68",
+        "seg2": "80",
+        "className": "",
+        "x": 1050,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "b58fe14c.18f3c8",
+        "type": "mqtt in",
+        "z": "806ca4b7.f7d72",
+        "name": "Kiln temperature",
+        "topic": "home/kiln/temp",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "88e70c38.732038",
+        "x": 160,
+        "y": 520,
+        "wires": [
+            [
+                "f9dc5287.bcfbb"
+            ]
+        ]
+    },
+    {
+        "id": "fa55c6cb.3946a8",
+        "type": "ui_gauge",
+        "z": "806ca4b7.f7d72",
+        "name": "Kiln temperature",
+        "group": "a60c86aa97d993ca",
+        "order": 20,
+        "width": 1,
+        "height": 1,
+        "gtype": "donut",
+        "title": "",
+        "label": "",
+        "format": "",
+        "min": "-20",
+        "max": "4000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "200",
+        "seg2": "212",
+        "className": "",
+        "x": 1030,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "b3b00010.4f685",
+        "type": "mqtt in",
+        "z": "806ca4b7.f7d72",
+        "name": "Kiln CJ temperature",
+        "topic": "home/kiln/cjtemp",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "88e70c38.732038",
+        "x": 170,
+        "y": 580,
+        "wires": [
+            [
+                "4dc302fd.723b0c"
+            ]
+        ]
+    },
+    {
+        "id": "177e7370.d97e35",
+        "type": "ui_gauge",
+        "z": "806ca4b7.f7d72",
+        "name": "Kiln CJ temperature",
+        "group": "a60c86aa97d993ca",
+        "order": 24,
+        "width": 1,
+        "height": 1,
+        "gtype": "donut",
+        "title": "",
+        "label": "",
+        "format": "",
+        "min": "-20",
+        "max": "120",
+        "colors": [
+            "#0000ff",
+            "#00ff00",
+            "#ca3838"
+        ],
+        "seg1": "60",
+        "seg2": "90",
+        "className": "",
+        "x": 1040,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "5dfac61b.bb8d98",
+        "type": "ui_text",
+        "z": "806ca4b7.f7d72",
+        "group": "a60c86aa97d993ca",
+        "order": 2,
+        "width": 5,
+        "height": 1,
+        "name": "Living room temp",
+        "label": "Living Room",
+        "format": "<font size=\"5\">{{msg.payload}} &deg;F</font>",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1030,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "22716efb.8a9fba",
+        "type": "ui_text",
+        "z": "806ca4b7.f7d72",
+        "group": "a60c86aa97d993ca",
+        "order": 5,
+        "width": 5,
+        "height": 1,
+        "name": "Ham shack",
+        "label": "Ham shack",
+        "format": "<font size=\"5\">{{msg.payload}} &deg;F</font>",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1010,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "fbc3941b.b42258",
+        "type": "ui_text",
+        "z": "806ca4b7.f7d72",
+        "group": "a60c86aa97d993ca",
+        "order": 19,
+        "width": 5,
+        "height": 1,
+        "name": "Kiln",
+        "label": "Kiln",
+        "format": "<font size=\"5\">{{msg.payload}} &deg;F</font>",
+        "layout": "row-spread",
+        "className": "",
+        "x": 990,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "5f2ebe5f.13822",
+        "type": "ui_text",
+        "z": "806ca4b7.f7d72",
+        "group": "a60c86aa97d993ca",
+        "order": 23,
+        "width": 5,
+        "height": 1,
+        "name": "Kiln CJ",
+        "label": "Kiln CJ",
+        "format": "<font size=\"5\">{{msg.payload}} &deg;F</font>",
+        "layout": "row-spread",
+        "className": "",
+        "x": 990,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "735073c5.db417c",
+        "type": "mqtt in",
+        "z": "806ca4b7.f7d72",
+        "name": "Lab Humidity",
+        "topic": "home/lab/humidity1",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "88e70c38.732038",
+        "x": 150,
+        "y": 420,
+        "wires": [
+            [
+                "492817c6.695a38",
+                "3af00b069591268b"
+            ]
+        ]
+    },
+    {
+        "id": "492817c6.695a38",
+        "type": "ui_text",
+        "z": "806ca4b7.f7d72",
+        "group": "a60c86aa97d993ca",
+        "order": 12,
+        "width": 5,
+        "height": 1,
+        "name": "Ham shack humidity",
+        "label": "Ham shack humidity",
+        "format": "<font size=\"5\">{{msg.payload}}%</font>",
+        "layout": "row-spread",
+        "className": "",
+        "x": 440,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "7601c83a.d1d07",
+        "type": "function",
+        "z": "806ca4b7.f7d72",
+        "name": "Label source",
+        "func": "return {\n    topic : \"ham shack\",\n    payload : msg.payload \n};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 430,
+        "y": 300,
+        "wires": [
+            [
+                "22716efb.8a9fba",
+                "9d966841.9a1a9",
+                "689c264e.d6cac8"
+            ]
+        ]
+    },
+    {
+        "id": "4dc302fd.723b0c",
+        "type": "function",
+        "z": "806ca4b7.f7d72",
+        "name": "Label source",
+        "func": "return {\n    topic : \"kiln cj\",\n    payload : msg.payload \n};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 410,
+        "y": 580,
+        "wires": [
+            [
+                "5f2ebe5f.13822",
+                "177e7370.d97e35",
+                "d5fe5b1c.bca0d8"
+            ]
+        ]
+    },
+    {
+        "id": "f9dc5287.bcfbb",
+        "type": "function",
+        "z": "806ca4b7.f7d72",
+        "name": "Label source",
+        "func": "return {\n    topic : \"kiln\",\n    payload : msg.payload \n};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 410,
+        "y": 520,
+        "wires": [
+            [
+                "fbc3941b.b42258",
+                "fa55c6cb.3946a8",
+                "d5fe5b1c.bca0d8"
+            ]
+        ]
+    },
+    {
+        "id": "294a0faf.ba9bc",
+        "type": "function",
+        "z": "806ca4b7.f7d72",
+        "name": "Label source",
+        "func": "return {\n    topic : \"living room\",\n    payload : msg.payload \n};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 430,
+        "y": 180,
+        "wires": [
+            [
+                "5dfac61b.bb8d98",
+                "8743b0d7.d822e8",
+                "689c264e.d6cac8"
+            ]
+        ]
+    },
+    {
+        "id": "f2e642f7.88e728",
+        "type": "mqtt in",
+        "z": "806ca4b7.f7d72",
+        "name": "Bedroom temperature",
+        "topic": "office/temperature1",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "88e70c38.732038",
+        "x": 180,
+        "y": 240,
+        "wires": [
+            [
+                "b11ee46f.ba23a"
+            ]
+        ]
+    },
+    {
+        "id": "b11ee46f.ba23a",
+        "type": "function",
+        "z": "806ca4b7.f7d72",
+        "name": "Label source",
+        "func": "return {\n    topic : \"bedroom\",\n    payload : msg.payload \n};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 430,
+        "y": 240,
+        "wires": [
+            [
+                "4268a0ba.bd1ec8",
+                "db95359c.cff4e",
+                "689c264e.d6cac8"
+            ]
+        ]
+    },
+    {
+        "id": "4268a0ba.bd1ec8",
+        "type": "ui_text",
+        "z": "806ca4b7.f7d72",
+        "group": "a60c86aa97d993ca",
+        "order": 9,
+        "width": 5,
+        "height": 1,
+        "name": "Bedroom temp",
+        "label": "Bedroom",
+        "format": "<font size=\"5\">{{msg.payload}} &deg;F</font>",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1020,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "db95359c.cff4e",
+        "type": "ui_gauge",
+        "z": "806ca4b7.f7d72",
+        "name": "Bedroom temperature",
+        "group": "a60c86aa97d993ca",
+        "order": 10,
+        "width": 1,
+        "height": 1,
+        "gtype": "donut",
+        "title": "",
+        "label": "",
+        "format": "",
+        "min": "42",
+        "max": "102",
+        "colors": [
+            "#0000ff",
+            "#00ff00",
+            "#ca3838"
+        ],
+        "seg1": "68",
+        "seg2": "80",
+        "className": "",
+        "x": 1040,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "fda01069.c09fa",
+        "type": "link in",
+        "z": "806ca4b7.f7d72",
+        "name": "Forecast",
+        "links": [
+            "3b5ab840.ea5118",
+            "eb2436f6.92c6c8",
+            "290fe4c0.1aa3ac"
+        ],
+        "x": 815,
+        "y": 80,
+        "wires": [
+            [
+                "ea0fe65f.13f848"
+            ]
+        ],
+        "outputLabels": [
+            "Current temp"
+        ]
+    },
+    {
+        "id": "6d758e1.7baf17",
+        "type": "inject",
+        "z": "ffed9118.13547",
+        "name": "",
+        "props": [
+            {
+                "p": "payload",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "string"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 240,
+        "wires": [
+            [
+                "c5fef6f4.928628"
+            ]
+        ]
+    },
+    {
+        "id": "c5fef6f4.928628",
+        "type": "ui_template",
+        "z": "ffed9118.13547",
+        "group": "aec35d97de1f3c69",
+        "name": "Analog clock",
+        "order": 5,
+        "width": 14,
+        "height": 13,
+        "format": "<!-- https://css-tricks.com/css3-clock/ -->\n<style>\n    #clock {\n        position: relative;\n        width: 580px;\n        height: 600px;\n        margin: 20px 0 0 8px;\n        background: url(/CSS3Clock/images/clockface.jpg);\n        background-repeat: no-repeat;\n        list-style: none;\n    }\n    \n    #sec, #min, #hour {\n        position: absolute;\n        width: 30px;\n        height: 600px;\n        top: 0px;\n        left: 285px;\n    }\n    \n    #sec {\n        background: url(/CSS3Clock/images/sechand.png);\n        z-index: 3;\n    }\n       \n    #min {\n        background: url(/CSS3Clock/images/minhand.png);\n        z-index: 2;\n    }\n       \n    #hour {\n        background: url(/CSS3Clock/images/hourhand.png);\n        z-index: 1;\n    }\n</style>\n\n<ul id=\"clock\">\t\n    <li id=\"sec\"></li>\n    <li id=\"hour\"></li>\n    <li id=\"min\"></li>\n</ul>\n\n<script>\n    $(function() {\n \n        setInterval( function() {\n            var seconds = new Date().getSeconds();\n            var sdegree = seconds * 6;\n            var srotate = \"rotate(\" + sdegree + \"deg)\";\n            \n            $(\"#sec\").css({ \"transform\": srotate });\n          \n        }, 1000 );\n        \n        setInterval( function() {\n            var hours = new Date().getHours();\n            var mins = new Date().getMinutes();\n            var hdegree = hours * 30 + (mins / 2);\n            var hrotate = \"rotate(\" + hdegree + \"deg)\";\n            \n            $(\"#hour\").css({ \"transform\": hrotate});\n          \n        }, 1000 );\n        \n        setInterval( function() {\n            var mins = new Date().getMinutes();\n            var mdegree = mins * 6;\n            var mrotate = \"rotate(\" + mdegree + \"deg)\";\n            \n            $(\"#min\").css({ \"transform\" : mrotate });\n          \n        }, 1000 );\n \n});\n</script>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 490,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "37f3c228.f9f5ae",
+        "type": "ui_text",
+        "z": "1539426a.37d8ce",
+        "group": "d30f6c0a.6e29e8",
+        "order": 27,
+        "width": 3,
+        "height": 1,
+        "name": "Forecast temp 5",
+        "label": "<font size=\"2\" color=\"cyan\">{{msg.label}}</font>",
+        "format": "<font size=\"6\">{{msg.payload}} &deg;F</font>",
+        "layout": "col-center",
+        "x": 1280,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "9779ce82.f11a6",
+        "type": "ui_text",
+        "z": "1539426a.37d8ce",
+        "group": "d30f6c0a.6e29e8",
+        "order": 29,
+        "width": 3,
+        "height": 1,
+        "name": "Forecast temp 6",
+        "label": "<font size=\"2\" color=\"cyan\">{{msg.label}}</font>",
+        "format": "<font size=\"6\">{{msg.payload}} &deg;F</font>",
+        "layout": "col-center",
+        "x": 1280,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "7f8a3141.d7def",
+        "type": "ui_text",
+        "z": "1539426a.37d8ce",
+        "group": "d30f6c0a.6e29e8",
+        "order": 30,
+        "width": 3,
+        "height": 1,
+        "name": "Forecast temp 7",
+        "label": "<font size=\"2\" color=\"cyan\">{{msg.label}}</font>",
+        "format": "<font size=\"6\">{{msg.payload}} &deg;F</font>",
+        "layout": "col-center",
+        "x": 1280,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "475e6139.5a6da",
+        "type": "ui_template",
+        "z": "1539426a.37d8ce",
+        "group": "d30f6c0a.6e29e8",
+        "name": "icon 5",
+        "order": 33,
+        "width": 3,
+        "height": 3,
+        "format": "<img src={{msg.payload}} />",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 1190,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a41209be.45ee18",
+        "type": "ui_template",
+        "z": "1539426a.37d8ce",
+        "group": "d30f6c0a.6e29e8",
+        "name": "icon 6",
+        "order": 35,
+        "width": 3,
+        "height": 3,
+        "format": "<img src={{msg.payload}} />",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 1190,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c97ba6fa.09aee",
+        "type": "ui_template",
+        "z": "1539426a.37d8ce",
+        "group": "d30f6c0a.6e29e8",
+        "name": "icon 7",
+        "order": 36,
+        "width": 3,
+        "height": 3,
+        "format": "<img src={{msg.payload}} />",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 1190,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f62ca12b.19dde",
+        "type": "function",
+        "z": "9261508f.204d7",
+        "name": "Extract detailed forecast",
+        "func": "let p = env.get(\"PERIOD\");\nif (typeof msg.payload.properties.periods[p].detailedForecast === \"undefined\")\n{\n    // usually happens if the weather API returns an error\n    return null; // don't post any message\n}\nvar forecast = msg.payload.properties.periods[p].detailedForecast;\nif (forecast.length > 300)\n{\n    forecast = forecast.substring(0, 300) +'...';\n}\nvar label = msg.payload.properties.periods[p].name;\nmsg.label = label;\nmsg.payload = forecast;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 190,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3aa67860.5041e",
+        "type": "ui_text",
+        "z": "1539426a.37d8ce",
+        "group": "d30f6c0a.6e29e8",
+        "order": 8,
+        "width": 15,
+        "height": 2,
+        "name": "Detailed forecast 1",
+        "label": "<font size=\"4\" color=\"cyan\">{{msg.label}}</font>",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 1290,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "6f517cd2.12d9a4",
+        "type": "ui_text",
+        "z": "1539426a.37d8ce",
+        "group": "d30f6c0a.6e29e8",
+        "order": 1,
+        "width": 15,
+        "height": 1,
+        "name": "Forecast time",
+        "label": "<font size=\"6\" color=\"#ff9900\">Brooklyn Forecast</font>",
+        "format": "<font size=\"5\" color=\"#ff9900\">Updated {{msg.payload}}</font>",
+        "layout": "row-spread",
+        "x": 1200,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "d5fe5b1c.bca0d8",
+        "type": "ui_chart",
+        "z": "806ca4b7.f7d72",
+        "name": "Kiln graph",
+        "group": "e4ef27d5.399958",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Kiln",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "Waiting for data...",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "24",
+        "removeOlderPoints": "1000000",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#ffffff",
+            "#ffff80",
+            "#ff7f0e",
+            "#2ca02c",
+            "#00ffff",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "x": 1010,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1a38b046.60ec3",
+        "type": "function",
+        "z": "cfb226a0.12274",
+        "name": "Format time",
+        "func": "var d = new Date(msg.payload);\nconst options = {\n hour12 : true,\n hour:  \"numeric\",\n minute: \"2-digit\"\n};\nvar timeString = d.toLocaleTimeString(\"en-US\",options);\nnode.status({fill:\"green\",shape:\"ring\",text: timeString});\nreturn { payload : timeString };",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 130,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "93ae98d6.f6f238",
+        "type": "function",
+        "z": "97af54d5.455cd",
+        "name": "Get forecast temperature",
+        "func": "let p = env.get(\"PERIOD\");\nif (typeof msg.payload.properties.periods[p].temperature === \"undefined\")\n{\n    // usually happens if the weather API returns an error\n    return null; // don't post any message\n}\nvar temperature = msg.payload.properties.periods[p].temperature;\nvar label = msg.payload.properties.periods[p].name;\nmsg.label = label;\nmsg.payload = temperature;\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 190,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "89033bf2.46eb3",
+        "type": "ui_text",
+        "z": "1539426a.37d8ce",
+        "group": "d30f6c0a.6e29e8",
+        "order": 11,
+        "width": 3,
+        "height": 1,
+        "name": "Forecast temp 1",
+        "label": "<font size=\"2\" color=\"cyan\">{{msg.label}}</font>",
+        "format": "<font size=\"6\">{{msg.payload}} &deg;F</font>",
+        "layout": "col-center",
+        "x": 1280,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "e86f2098.c4dae",
+        "type": "subflow:9261508f.204d7",
+        "z": "1539426a.37d8ce",
+        "name": "Get forecast 1",
+        "env": [
+            {
+                "name": "PERIOD",
+                "value": "1",
+                "type": "num"
+            }
+        ],
+        "x": 1000,
+        "y": 60,
+        "wires": [
+            [
+                "3aa67860.5041e"
+            ]
+        ]
+    },
+    {
+        "id": "bdcf245d.94c0a",
+        "type": "subflow:9261508f.204d7",
+        "z": "1539426a.37d8ce",
+        "name": "Get forecast 0",
+        "env": [
+            {
+                "name": "PERIOD",
+                "value": "0",
+                "type": "num"
+            }
+        ],
+        "x": 1000,
+        "y": 20,
+        "wires": [
+            [
+                "1f2abfc6.92c1f8"
+            ]
+        ]
+    },
+    {
+        "id": "e1a3f843.7a0408",
+        "type": "subflow:97af54d5.455cd",
+        "z": "1539426a.37d8ce",
+        "name": "Get forecast temperature 0",
+        "env": [
+            {
+                "name": "PERIOD",
+                "value": "0",
+                "type": "num"
+            }
+        ],
+        "x": 1040,
+        "y": 100,
+        "wires": [
+            [
+                "fd19e7b6.f4321"
+            ]
+        ]
+    },
+    {
+        "id": "f182166a.4ee9f8",
+        "type": "subflow:97af54d5.455cd",
+        "z": "1539426a.37d8ce",
+        "name": "Get forecast temperature 1",
+        "env": [
+            {
+                "name": "PERIOD",
+                "value": "1",
+                "type": "num"
+            }
+        ],
+        "x": 1040,
+        "y": 140,
+        "wires": [
+            [
+                "89033bf2.46eb3"
+            ]
+        ]
+    },
+    {
+        "id": "8fb48999.d5cd7",
+        "type": "subflow:97af54d5.455cd",
+        "z": "1539426a.37d8ce",
+        "name": "Get forecast temperature 2",
+        "env": [
+            {
+                "name": "PERIOD",
+                "value": "2",
+                "type": "num"
+            }
+        ],
+        "x": 1040,
+        "y": 180,
+        "wires": [
+            [
+                "1aec96c4.aac819"
+            ]
+        ]
+    },
+    {
+        "id": "9b5cebb7.434838",
+        "type": "subflow:97af54d5.455cd",
+        "z": "1539426a.37d8ce",
+        "name": "Get forecast temperaure 3",
+        "env": [
+            {
+                "name": "PERIOD",
+                "value": "3",
+                "type": "num"
+            }
+        ],
+        "x": 1040,
+        "y": 220,
+        "wires": [
+            [
+                "16bb1da4.910082"
+            ]
+        ]
+    },
+    {
+        "id": "f41f1297.df7a78",
+        "type": "subflow:97af54d5.455cd",
+        "z": "1539426a.37d8ce",
+        "name": "Get forecast temperature 4",
+        "env": [
+            {
+                "name": "PERIOD",
+                "value": "4",
+                "type": "num"
+            }
+        ],
+        "x": 1040,
+        "y": 260,
+        "wires": [
+            [
+                "1dab5252.0712ee"
+            ]
+        ]
+    },
+    {
+        "id": "179a7f30.7a9fc9",
+        "type": "subflow:97af54d5.455cd",
+        "z": "1539426a.37d8ce",
+        "name": "Get forecast temperature 5",
+        "env": [
+            {
+                "name": "PERIOD",
+                "value": "5",
+                "type": "num"
+            }
+        ],
+        "x": 1040,
+        "y": 300,
+        "wires": [
+            [
+                "37f3c228.f9f5ae"
+            ]
+        ]
+    },
+    {
+        "id": "195b6ee3.562a69",
+        "type": "subflow:97af54d5.455cd",
+        "z": "1539426a.37d8ce",
+        "name": "Get forecast temperature 6",
+        "env": [
+            {
+                "name": "PERIOD",
+                "value": "6",
+                "type": "num"
+            }
+        ],
+        "x": 1040,
+        "y": 340,
+        "wires": [
+            [
+                "9779ce82.f11a6"
+            ]
+        ]
+    },
+    {
+        "id": "9b0d680a.3fd7b",
+        "type": "subflow:97af54d5.455cd",
+        "z": "1539426a.37d8ce",
+        "name": "Get forecast temperature 7",
+        "env": [
+            {
+                "name": "PERIOD",
+                "value": "7",
+                "type": "num"
+            }
+        ],
+        "x": 1040,
+        "y": 380,
+        "wires": [
+            [
+                "7f8a3141.d7def"
+            ]
+        ]
+    },
+    {
+        "id": "fd19e7b6.f4321",
+        "type": "ui_text",
+        "z": "1539426a.37d8ce",
+        "group": "d30f6c0a.6e29e8",
+        "order": 10,
+        "width": 3,
+        "height": 1,
+        "name": "Forecast temp 0",
+        "label": "<font size=\"2\" color=\"cyan\">{{msg.label}}</font>",
+        "format": "<font size=\"6\">{{msg.payload}} &deg;F</font>",
+        "layout": "col-center",
+        "x": 1280,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "3b9ab9bd.f457a6",
+        "type": "function",
+        "z": "ffed9118.13547",
+        "name": "Get date",
+        "func": "d = new Date();\nconst options = {\n month:\"long\",\n day:\"numeric\"\n};\nconst options2 = {\n weekday: \"long\"   \n};\nmsg.payload = d.toLocaleDateString(\"en-US\",options2) + \" \" + \n d.toLocaleDateString(\"en-US\",options);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 490,
+        "y": 340,
+        "wires": [
+            [
+                "370c74c4.a52774"
+            ]
+        ]
+    },
+    {
+        "id": "5424c2cf.4e3a6c",
+        "type": "inject",
+        "z": "ffed9118.13547",
+        "name": "At midnight",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "00 00 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 310,
+        "y": 340,
+        "wires": [
+            [
+                "3b9ab9bd.f457a6"
+            ]
+        ]
+    },
+    {
+        "id": "370c74c4.a52774",
+        "type": "ui_text",
+        "z": "ffed9118.13547",
+        "group": "aec35d97de1f3c69",
+        "order": 1,
+        "width": 14,
+        "height": 1,
+        "name": "date",
+        "label": "",
+        "format": "<font size=\"8\" color=\"yellow\">{{msg.payload}}</font>",
+        "layout": "row-center",
+        "className": "",
+        "x": 650,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "5b8c6634.a6ad7",
+        "type": "subflow:3c56223b.56b5c6",
+        "z": "1539426a.37d8ce",
+        "name": "Get weather icon 0",
+        "env": [
+            {
+                "name": "PERIOD",
+                "value": "0",
+                "type": "num"
+            }
+        ],
+        "x": 1010,
+        "y": 420,
+        "wires": [
+            [
+                "42810ce4.251cac"
+            ]
+        ]
+    },
+    {
+        "id": "8be529e8.2ede78",
+        "type": "subflow:3c56223b.56b5c6",
+        "z": "1539426a.37d8ce",
+        "name": "Get weather icon 1",
+        "env": [
+            {
+                "name": "PERIOD",
+                "value": "1",
+                "type": "num"
+            }
+        ],
+        "x": 1010,
+        "y": 460,
+        "wires": [
+            [
+                "c8ce02fd.818f6"
+            ]
+        ]
+    },
+    {
+        "id": "f4134c73.cd384",
+        "type": "subflow:3c56223b.56b5c6",
+        "z": "1539426a.37d8ce",
+        "name": "Get weather icon 2",
+        "env": [
+            {
+                "name": "PERIOD",
+                "value": "2",
+                "type": "num"
+            }
+        ],
+        "x": 1010,
+        "y": 500,
+        "wires": [
+            [
+                "8a7df207.b53ce"
+            ]
+        ]
+    },
+    {
+        "id": "65b19a22.4e3454",
+        "type": "subflow:3c56223b.56b5c6",
+        "z": "1539426a.37d8ce",
+        "name": "Get weather icon 3",
+        "env": [
+            {
+                "name": "PERIOD",
+                "value": "3",
+                "type": "num"
+            }
+        ],
+        "x": 1010,
+        "y": 540,
+        "wires": [
+            [
+                "d87fe56b.65022"
+            ]
+        ]
+    },
+    {
+        "id": "3ac999cd.1ec60e",
+        "type": "subflow:3c56223b.56b5c6",
+        "z": "1539426a.37d8ce",
+        "name": "Get weather icon 4",
+        "env": [
+            {
+                "name": "PERIOD",
+                "value": "4",
+                "type": "num"
+            }
+        ],
+        "x": 1010,
+        "y": 580,
+        "wires": [
+            [
+                "6c1fc848.036f4"
+            ]
+        ]
+    },
+    {
+        "id": "3c8b5efb.0813ea",
+        "type": "subflow:3c56223b.56b5c6",
+        "z": "1539426a.37d8ce",
+        "name": "Get weather icon 6",
+        "env": [
+            {
+                "name": "PERIOD",
+                "value": "6",
+                "type": "num"
+            }
+        ],
+        "x": 1010,
+        "y": 660,
+        "wires": [
+            [
+                "a41209be.45ee18"
+            ]
+        ]
+    },
+    {
+        "id": "36ccf365.f8e514",
+        "type": "subflow:3c56223b.56b5c6",
+        "z": "1539426a.37d8ce",
+        "name": "Get weather icon 5",
+        "env": [
+            {
+                "name": "PERIOD",
+                "value": "5",
+                "type": "num"
+            }
+        ],
+        "x": 1010,
+        "y": 620,
+        "wires": [
+            [
+                "475e6139.5a6da"
+            ]
+        ]
+    },
+    {
+        "id": "7d8a1215.880de4",
+        "type": "subflow:3c56223b.56b5c6",
+        "z": "1539426a.37d8ce",
+        "name": "Get weather icon 7",
+        "env": [
+            {
+                "name": "PERIOD",
+                "value": "7",
+                "type": "num"
+            }
+        ],
+        "x": 1010,
+        "y": 700,
+        "wires": [
+            [
+                "c97ba6fa.09aee"
+            ]
+        ]
+    },
+    {
+        "id": "8638e577.29d458",
+        "type": "subflow:cfb226a0.12274",
+        "z": "1539426a.37d8ce",
+        "name": "",
+        "env": [],
+        "x": 990,
+        "y": 780,
+        "wires": [
+            [
+                "6f517cd2.12d9a4"
+            ]
+        ]
+    },
+    {
+        "id": "32b75104.0e629e",
+        "type": "function",
+        "z": "12cba20c.5228de",
+        "name": "Check if message valid",
+        "func": "/*\nThis function checks the decoded JSON message to see if it \ncontains the expected payload type. If so this is considered \na good message, if not it is a bad message. A bad message\nnormally occurs if there is an error on the NWS API.\n\nThis function has two outputs, msg and retry.\n\nIf bad message then return null (do nothing) on output 1 and\nreturn a message intended to trigger a retry on output 2. \nSend this retry signal a maximum of 3 times. The retry counter\nis reset when a good message is received.\n\nIf good message then reset the retry counter and return the \nfull message (send it on) on output 1. Return null on output 2.\n\n*/\n\nif (msg.payload.type !== \"Feature\")\n{\n    // Bad message\n    node.status({fill:\"red\",shape:\"dot\",text:\"retry\"});\n    var retries = flow.get('retries') || 0;\n    retries++;\n    flow.set('retries', retries);\n    if (retries <= 3)\n    {\n        node.warn(\"Weather API returned an error, retry \" + retries);\n        return [null, { payload: \"retry\" }];\n    }\n    node.warn(\"Weather API returned an error, retries exceeded\");\n    return [null, null]; // abort and don't post any message\n}\n\n// good message received so set retries to zero\nflow.set('retries', 0);\nnode.status({fill:\"green\",shape:\"dot\",text:\"OK\"});\n\n// return the full message on output 1\n// nothing on output 2\nreturn [msg, null];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 630,
+        "y": 80,
+        "wires": [
+            [],
+            []
+        ],
+        "outputLabels": [
+            "full message",
+            "retry"
+        ]
+    },
+    {
+        "id": "ea0fe65f.13f848",
+        "type": "ui_chart",
+        "z": "806ca4b7.f7d72",
+        "name": "Outside temperature graph",
+        "group": "ef92bf54.f130d",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Outside temperature",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "Waiting for data...",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "24",
+        "removeOlderPoints": "100000",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "x": 1060,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "689c264e.d6cac8",
+        "type": "ui_chart",
+        "z": "806ca4b7.f7d72",
+        "name": "Inside temperature graph",
+        "group": "3e54635b.a9baec",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Inside temperatures",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "Waiting for data...",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "24",
+        "removeOlderPoints": "100000",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "x": 1050,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dc4a7ee5.6934",
+        "type": "function",
+        "z": "d6b5a0d5.208678",
+        "name": "Label source",
+        "func": "return {\n    topic : \"outside\",\n    payload : msg.payload \n};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1090,
+        "y": 140,
+        "wires": [
+            [
+                "94057415.976b3",
+                "290fe4c0.1aa3ac"
+            ]
+        ]
+    },
+    {
+        "id": "94057415.976b3",
+        "type": "ui_text",
+        "z": "d6b5a0d5.208678",
+        "group": "d30f6c0a.6e29e8",
+        "order": 3,
+        "width": 5,
+        "height": 1,
+        "name": "Current temp",
+        "label": "",
+        "format": "<font size=\"8\" color=\"yellow\">{{msg.payload}} &deg;F</font>",
+        "layout": "row-center",
+        "x": 1270,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "290fe4c0.1aa3ac",
+        "type": "link out",
+        "z": "d6b5a0d5.208678",
+        "name": "Current temp",
+        "links": [
+            "fda01069.c09fa"
+        ],
+        "x": 1215,
+        "y": 100,
+        "wires": [],
+        "inputLabels": [
+            "To history graph"
+        ]
+    },
+    {
+        "id": "9c8cf181.dd976",
+        "type": "exec",
+        "z": "d6b5a0d5.208678",
+        "command": "curl -X GET \"https://api.weather.gov/stations/KMSN/observations/latest\" -H  \"accept: application/geo+json\"",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Get current observations",
+        "x": 210,
+        "y": 120,
+        "wires": [
+            [
+                "3285dd25.19d61a"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "bb8aafc7.0d2bd",
+        "type": "function",
+        "z": "d6b5a0d5.208678",
+        "name": "Extract current temp",
+        "func": "if (typeof msg.payload.properties.temperature.value === \"undefined\")\n{\n    // usually happens if the weather API returns an error\n    return null; // don't post any message\n}\nvar t = msg.payload.properties.temperature.value;\nif (isNaN(t))\n{\n        // if t is not a number\n        return null;\n}\nreturn { payload : t };\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 700,
+        "y": 140,
+        "wires": [
+            [
+                "347a921.f1a626e"
+            ]
+        ]
+    },
+    {
+        "id": "347a921.f1a626e",
+        "type": "unit-converter",
+        "z": "d6b5a0d5.208678",
+        "category": "temperature",
+        "inputUnit": "C",
+        "outputUnit": "F",
+        "inputField": "payload",
+        "outputField": "payload",
+        "inputFieldType": "msg",
+        "outputFieldType": "msg",
+        "roundOutputField": true,
+        "outputFieldDecimals": "1",
+        "name": "Convert to deg F",
+        "x": 910,
+        "y": 140,
+        "wires": [
+            [
+                "dc4a7ee5.6934"
+            ]
+        ]
+    },
+    {
+        "id": "2b557844.b2b298",
+        "type": "function",
+        "z": "d6b5a0d5.208678",
+        "name": "Extract humidity",
+        "func": "if (typeof msg.payload.properties.relativeHumidity.value === \"undefined\")\n{\n    // usually happens if the weather API returns an error\n    return null; // don't post any message\n}\nreturn { payload : msg.payload.properties.relativeHumidity.value };\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 680,
+        "y": 180,
+        "wires": [
+            [
+                "d702ff21.2dc5d"
+            ]
+        ]
+    },
+    {
+        "id": "77e3fb89.7acad4",
+        "type": "ui_text",
+        "z": "d6b5a0d5.208678",
+        "group": "d30f6c0a.6e29e8",
+        "order": 4,
+        "width": 2,
+        "height": 1,
+        "name": "Current humidity",
+        "label": "",
+        "format": "{{msg.payload}}% humidity",
+        "layout": "row-left",
+        "x": 1290,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "2a01f70f.47b678",
+        "type": "function",
+        "z": "d6b5a0d5.208678",
+        "name": "Extract description",
+        "func": "if (typeof msg.payload.properties.textDescription === \"undefined\")\n{\n    // usually happens if the weather API returns an error\n    return null; // don't post any message\n}\nreturn { payload : msg.payload.properties.textDescription };\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 690,
+        "y": 220,
+        "wires": [
+            [
+                "79187dc4.e4f30c"
+            ]
+        ]
+    },
+    {
+        "id": "79187dc4.e4f30c",
+        "type": "ui_text",
+        "z": "d6b5a0d5.208678",
+        "group": "d30f6c0a.6e29e8",
+        "order": 5,
+        "width": 3,
+        "height": 1,
+        "name": "Current conditions",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 1290,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "d702ff21.2dc5d",
+        "type": "range",
+        "z": "d6b5a0d5.208678",
+        "minin": "0",
+        "maxin": "100",
+        "minout": "0",
+        "maxout": "100",
+        "action": "scale",
+        "round": true,
+        "property": "payload",
+        "name": "Integer",
+        "x": 840,
+        "y": 180,
+        "wires": [
+            [
+                "77e3fb89.7acad4"
+            ]
+        ]
+    },
+    {
+        "id": "7b6a61.2a40c5a",
+        "type": "ui_text",
+        "z": "d6b5a0d5.208678",
+        "group": "d30f6c0a.6e29e8",
+        "order": 2,
+        "width": 4,
+        "height": 1,
+        "name": "Observation time",
+        "label": "<font size=\"5\">Madison</font>",
+        "format": "<font size=\"4\">at {{msg.payload}}</font>",
+        "layout": "col-center",
+        "x": 1290,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "99290475.714f68",
+        "type": "function",
+        "z": "d6b5a0d5.208678",
+        "name": "Extract observation timestamp",
+        "func": "if (typeof msg.payload.properties.timestamp === \"undefined\")\n{\n    // usually happens if the weather API returns an error\n    return null; // don't post any message\n}\nvar t = msg.payload.properties.timestamp;\nreturn { payload : t };",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 730,
+        "y": 260,
+        "wires": [
+            [
+                "e8e78666.b23bb"
+            ]
+        ]
+    },
+    {
+        "id": "e8e78666.b23bb",
+        "type": "subflow:cfb226a0.12274",
+        "z": "d6b5a0d5.208678",
+        "name": "",
+        "env": [],
+        "x": 950,
+        "y": 260,
+        "wires": [
+            [
+                "7b6a61.2a40c5a"
+            ]
+        ]
+    },
+    {
+        "id": "fc09daed.98134",
+        "type": "inject",
+        "z": "d6b5a0d5.208678",
+        "name": "timer",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 60,
+        "wires": [
+            [
+                "9c8cf181.dd976"
+            ]
+        ]
+    },
+    {
+        "id": "e15b6ca2.1bd0c",
+        "type": "exec",
+        "z": "1528894b.73fa5f",
+        "command": "curl -X GET \"https://api.weather.gov/alerts/active/zone/WIZ068\" -H  \"accept: application/geo+json\"",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Get alerts for Green County",
+        "x": 360,
+        "y": 280,
+        "wires": [
+            [
+                "85f98178.9b7ab8"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "33ac8cdf.ac1074",
+        "type": "inject",
+        "z": "1528894b.73fa5f",
+        "name": "timer",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "120",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 80,
+        "y": 160,
+        "wires": [
+            [
+                "9164cbc6.10b138",
+                "2159b91e.c79886",
+                "f41adb1.2c369a8"
+            ]
+        ]
+    },
+    {
+        "id": "83e8f5b0.f59bf8",
+        "type": "json",
+        "z": "c44de0cd.3d696",
+        "name": "JSON to object 3",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 190,
+        "y": 80,
+        "wires": [
+            [
+                "79690265.fd73ec"
+            ]
+        ]
+    },
+    {
+        "id": "5b0326bb.59ac88",
+        "type": "function",
+        "z": "342e347.23b064c",
+        "name": "Check message",
+        "func": "/*\nCheck to see if a previous command node failed.\nIf yes then send no message (null) on output 1 and send a message\non output 2 that is intended to trigger a retry. Do this a \nmaximum of three times using a flow variable to count retries. \nThe retry count is reset in the downstream node that checks for \ngood messages.\n\nIf the command succeeded then pass the message on output 1 and\nsend no message on output 2\n*/\n\nlet s = env.get(\"ERROR_MESSAGE\");\n\n// a null payload means the command failed\n// a \"{\" character is expected as first char for valid JSON\nif ((msg.payload === \"\") ||\n        (msg.payload.charAt(0) !== \"{\"))\n{\n    // error detected\n    node.status({fill:\"red\",shape:\"dot\",text:\"retry\"});\n    var retries = flow.get('retries') || 0;\n    retries++;\n    flow.set('retries', retries);\n    if (retries <= 3)\n    {\n        node.warn(s+ \", retry \" + retries);\n        return [null, { payload: \"retry\" }];\n    }\n    node.warn(s + \", retries exceeded\");\n    return [null, null]; // abort and don't post any message\n}\n\n// message OK\nnode.status({fill:\"green\",shape:\"dot\",text:\"OK\"});\nreturn [msg, null];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "45cf4f69.eb4ff8",
+        "type": "subflow:342e347.23b064c",
+        "z": "1539426a.37d8ce",
+        "name": "",
+        "env": [
+            {
+                "name": "ERROR_MESSAGE",
+                "value": "Get forecast command failed",
+                "type": "str"
+            }
+        ],
+        "x": 310,
+        "y": 220,
+        "wires": [
+            [
+                "ce251c8.9a0a6e"
+            ],
+            [
+                "9665542d.e73e2"
+            ]
+        ]
+    },
+    {
+        "id": "3285dd25.19d61a",
+        "type": "subflow:342e347.23b064c",
+        "z": "d6b5a0d5.208678",
+        "name": "",
+        "env": [
+            {
+                "name": "ERROR_MESSAGE",
+                "value": "Current observations command failed",
+                "type": "str"
+            }
+        ],
+        "x": 370,
+        "y": 200,
+        "wires": [
+            [
+                "9db421ba.2cdfc"
+            ],
+            [
+                "65c0b0f3.1c10c"
+            ]
+        ]
+    },
+    {
+        "id": "85f98178.9b7ab8",
+        "type": "subflow:342e347.23b064c",
+        "z": "1528894b.73fa5f",
+        "name": "",
+        "env": [
+            {
+                "name": "ERROR_MESSAGE",
+                "value": "Alert exec command failed",
+                "type": "str"
+            }
+        ],
+        "x": 670,
+        "y": 240,
+        "wires": [
+            [
+                "218ff46c.34e204"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "d58d9114.5a1808",
+        "type": "mqtt in",
+        "z": "806ca4b7.f7d72",
+        "name": "Back room temperature",
+        "topic": "home/backroom/temperature1",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "88e70c38.732038",
+        "x": 180,
+        "y": 360,
+        "wires": [
+            [
+                "608ce8cd.d0a51"
+            ]
+        ]
+    },
+    {
+        "id": "608ce8cd.d0a51",
+        "type": "function",
+        "z": "806ca4b7.f7d72",
+        "name": "Label source",
+        "func": "return {\n    topic : \"back room\",\n    payload : msg.payload \n};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 410,
+        "y": 360,
+        "wires": [
+            [
+                "689c264e.d6cac8",
+                "2848dfab.1f70f8",
+                "70b620be.06f91"
+            ]
+        ]
+    },
+    {
+        "id": "2848dfab.1f70f8",
+        "type": "ui_text",
+        "z": "806ca4b7.f7d72",
+        "group": "a60c86aa97d993ca",
+        "order": 16,
+        "width": 5,
+        "height": 1,
+        "name": "Back room temp",
+        "label": "Back Room",
+        "format": "<font size=\"5\">{{msg.payload}} &deg;F</font>",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1020,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "70b620be.06f91",
+        "type": "ui_gauge",
+        "z": "806ca4b7.f7d72",
+        "name": "Back room temperature",
+        "group": "a60c86aa97d993ca",
+        "order": 17,
+        "width": 1,
+        "height": 1,
+        "gtype": "donut",
+        "title": "",
+        "label": "",
+        "format": "",
+        "min": "42",
+        "max": "102",
+        "colors": [
+            "#0000ff",
+            "#00ff00",
+            "#ca3838"
+        ],
+        "seg1": "68",
+        "seg2": "80",
+        "className": "",
+        "x": 1050,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "9665542d.e73e2",
+        "type": "delay",
+        "z": "1539426a.37d8ce",
+        "name": "Retry delay",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "minutes",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 150,
+        "y": 380,
+        "wires": [
+            [
+                "daa2bc3c.12f73"
+            ]
+        ]
+    },
+    {
+        "id": "96eae0db.364c6",
+        "type": "exec",
+        "z": "1528894b.73fa5f",
+        "command": "curl -X GET \"https://api.weather.gov/alerts/active/zone/WIZ063\" -H  \"accept: application/geo+json\"",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Get alerts for Dane County",
+        "x": 360,
+        "y": 220,
+        "wires": [
+            [
+                "85f98178.9b7ab8"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "f41adb1.2c369a8",
+        "type": "exec",
+        "z": "1528894b.73fa5f",
+        "command": "curl -X GET \"https://api.weather.gov/alerts/active/zone/WIZ069\" -H  \"accept: application/geo+json\"",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Get alerts for Rock County",
+        "x": 360,
+        "y": 160,
+        "wires": [
+            [
+                "85f98178.9b7ab8"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "9164cbc6.10b138",
+        "type": "delay",
+        "z": "1528894b.73fa5f",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "30",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 160,
+        "y": 220,
+        "wires": [
+            [
+                "96eae0db.364c6"
+            ]
+        ]
+    },
+    {
+        "id": "2159b91e.c79886",
+        "type": "delay",
+        "z": "1528894b.73fa5f",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "60",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 160,
+        "y": 280,
+        "wires": [
+            [
+                "e15b6ca2.1bd0c"
+            ]
+        ]
+    },
+    {
+        "id": "79690265.fd73ec",
+        "type": "function",
+        "z": "c44de0cd.3d696",
+        "name": "Check if alert valid",
+        "func": "if (msg.payload.type !== \"FeatureCollection\")\n{\n    // if not a valid alert message\n    node.warn(\"Invalid alert message\");\n    return null;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 410,
+        "y": 80,
+        "wires": [
+            [
+                "ab4087b0.e6191"
+            ]
+        ]
+    },
+    {
+        "id": "ab4087b0.e6191",
+        "type": "function",
+        "z": "c44de0cd.3d696",
+        "name": "Decode alert",
+        "func": "alerts = msg.payload.features.length;\nvar msg2 = {};\n\n\n\nif(alerts === 0)\n{\n    s = msg.payload.title;\n    // capitalize the first letter of the title\n    msg2.title = s.charAt(0).toUpperCase() + s.slice(1);\n    msg2.payload = \"None\";\n}\nelse\n{\n    msg2.title = msg.payload.features[0].properties.areaDesc;\n    msg2.payload =  '<font color=\"red\">' +\n                    msg.payload.features[0].properties.event+\n                    '</font>';\n   \n}\n\nreturn msg2;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 610,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "218ff46c.34e204",
+        "type": "subflow:c44de0cd.3d696",
+        "z": "1528894b.73fa5f",
+        "name": "",
+        "env": [],
+        "x": 900,
+        "y": 240,
+        "wires": [
+            [
+                "fafd49b4.f60b78"
+            ]
+        ]
+    },
+    {
+        "id": "fafd49b4.f60b78",
+        "type": "ui_text",
+        "z": "1528894b.73fa5f",
+        "group": "d30f6c0a.6e29e8",
+        "order": 9,
+        "width": 15,
+        "height": 2,
+        "name": "Alerts",
+        "label": "<font size=\"4\" color=\"cyan\">{{msg.title}}</font>",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 1130,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "a2e1cb97.c6f888",
+        "type": "function",
+        "z": "1539426a.37d8ce",
+        "name": "Check if forecast newer",
+        "func": "/*\n Check to see if this forecast is newer than the newest\n previously received.\n \n If it is newer return the full forecast message on output 1, and\n return the update time for this forecast on output 2.\n \n If it is not newer return null on both outputs which will not\n forward any message on (do nothing).\n \n*/\n\nvar d = new Date(msg.payload.properties.updated);\nvar time = d.getTime(); // this is the current forecast update time\nvar prev = context.get('prevTime') || 0; // get previous time\nif (time <= prev)\n{\n    // if this forecast is older or same as the previous\n    // abort and don't update anything\n    node.status({fill:\"red\",shape:\"dot\",text:\"not new\"});\n    return [null, null];\n}\n\n// OK to proceed, this forecast is newer than previous.\nnode.status({fill:\"green\",shape:\"dot\",text:\"newer\"});\n// Update the previous time to this time.\ncontext.set('prevTime', time);\n\n// return the full forecast message on output 1\n// return the forecast update time on output 2\nvar msg2 = { payload: msg.payload.properties.updated };\nreturn [msg, msg2];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 610,
+        "y": 380,
+        "wires": [
+            [
+                "bdcf245d.94c0a",
+                "e86f2098.c4dae",
+                "e1a3f843.7a0408",
+                "f182166a.4ee9f8",
+                "8fb48999.d5cd7",
+                "9b5cebb7.434838",
+                "f41f1297.df7a78",
+                "179a7f30.7a9fc9",
+                "195b6ee3.562a69",
+                "9b0d680a.3fd7b",
+                "5b8c6634.a6ad7",
+                "8be529e8.2ede78",
+                "f4134c73.cd384",
+                "65b19a22.4e3454",
+                "3ac999cd.1ec60e",
+                "36ccf365.f8e514",
+                "3c8b5efb.0813ea",
+                "7d8a1215.880de4"
+            ],
+            [
+                "8638e577.29d458"
+            ]
+        ]
+    },
+    {
+        "id": "ce251c8.9a0a6e",
+        "type": "subflow:12cba20c.5228de",
+        "z": "1539426a.37d8ce",
+        "name": "",
+        "env": [],
+        "x": 470,
+        "y": 300,
+        "wires": [
+            [
+                "a2e1cb97.c6f888"
+            ],
+            [
+                "9665542d.e73e2"
+            ]
+        ]
+    },
+    {
+        "id": "9db421ba.2cdfc",
+        "type": "subflow:12cba20c.5228de",
+        "z": "d6b5a0d5.208678",
+        "name": "",
+        "x": 430,
+        "y": 280,
+        "wires": [
+            [
+                "bb8aafc7.0d2bd",
+                "2b557844.b2b298",
+                "2a01f70f.47b678",
+                "99290475.714f68"
+            ],
+            [
+                "65c0b0f3.1c10c"
+            ]
+        ]
+    },
+    {
+        "id": "65c0b0f3.1c10c",
+        "type": "delay",
+        "z": "d6b5a0d5.208678",
+        "name": "Retry delay",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "minutes",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 130,
+        "y": 340,
+        "wires": [
+            [
+                "9c8cf181.dd976"
+            ]
+        ]
+    },
+    {
+        "id": "e11afd0e.97949",
+        "type": "status",
+        "z": "12cba20c.5228de",
+        "name": "",
+        "scope": null,
+        "x": 470,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e01e36a1.6e8158",
+        "type": "status",
+        "z": "342e347.23b064c",
+        "name": "",
+        "scope": null,
+        "x": 120,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8e2ee7b6.d43ee8",
+        "type": "status",
+        "z": "cfb226a0.12274",
+        "name": "",
+        "scope": null,
+        "x": 150,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3af00b069591268b",
+        "type": "ui_gauge",
+        "z": "806ca4b7.f7d72",
+        "name": "Ham shack humidity",
+        "group": "a60c86aa97d993ca",
+        "order": 13,
+        "width": 1,
+        "height": 1,
+        "gtype": "donut",
+        "title": "",
+        "label": "",
+        "format": "",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "50",
+        "seg2": "70",
+        "className": "",
+        "x": 440,
+        "y": 460,
+        "wires": []
+    }
+]
