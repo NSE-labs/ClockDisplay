@@ -18,3 +18,5 @@ The analog clock code is based on the example in [Old School Clock with CSS3 and
 You can find the National Weather Service API documentation [at this link](https://www.weather.gov/documentation/services-web-api#/default/get_stations__stationId__observations_latest) .  
 
 The Pokemon API interface documentation can be found [at this link](https://pokeapi.co/docs/v2). This applies to the Pokemon of the Day feature branch.
+
+Check out the [Wiki for this project](https://github.com/NSE-labs/ClockDisplay/wiki) for more information.
