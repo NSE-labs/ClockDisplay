@@ -13,12 +13,14 @@ Originally this was run on a Raspberry Pi Zero W. It would run on that hardware 
 
 The files are in a format that can be used by the Node Red project feature. You should be able to clone this project using the Node Red project menu.  
 
+Check out the [Wiki for this project](https://github.com/NSE-labs/ClockDisplay/wiki) for step-by-step instructions to implement your own version of this display.
+
+### Credits
+
 The analog clock code is based on the example in [Old School Clock with CSS3 and jQuery](https://css-tricks.com/css3-clock/) by Toby Pitman.
 
 [Raspberry Pi Kiosk using Chromium](https://pimylifeup.com/raspberry-pi-kiosk/) was used as a starting point for setting up the Raspberry Pi to start up with the browser as the display.  
 
 You can find the National Weather Service API documentation [at this link](https://www.weather.gov/documentation/services-web-api#/default/get_stations__stationId__observations_latest) .  
 
-The Pokemon API interface documentation can be found [at this link](https://pokeapi.co/docs/v2). This applies to the Pokemon of the Day feature branch.
-
-Check out the [Wiki for this project](https://github.com/NSE-labs/ClockDisplay/wiki) for more information.
+The Pokemon API interface documentation can be found [at this link](https://pokeapi.co/docs/v2).
