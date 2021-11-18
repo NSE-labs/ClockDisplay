@@ -3397,10 +3397,11 @@
         "append": "",
         "useSpawn": "false",
         "timer": "",
+        "winHide": false,
         "oldrc": false,
-        "name": "Get alerts for Green County",
-        "x": 360,
-        "y": 280,
+        "name": "Get alerts for local county",
+        "x": 370,
+        "y": 240,
         "wires": [
             [
                 "85f98178.9b7ab8"
@@ -3426,13 +3427,11 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 80,
-        "y": 160,
+        "x": 110,
+        "y": 240,
         "wires": [
             [
-                "9164cbc6.10b138",
-                "2159b91e.c79886",
-                "f41adb1.2c369a8"
+                "e15b6ca2.1bd0c"
             ]
         ]
     },
@@ -3637,94 +3636,6 @@
         "wires": [
             [
                 "daa2bc3c.12f73"
-            ]
-        ]
-    },
-    {
-        "id": "96eae0db.364c6",
-        "type": "exec",
-        "z": "1528894b.73fa5f",
-        "command": "curl -X GET \"https://api.weather.gov/alerts/active/zone/WIZ063\" -H  \"accept: application/geo+json\"",
-        "addpay": false,
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "oldrc": false,
-        "name": "Get alerts for Dane County",
-        "x": 360,
-        "y": 220,
-        "wires": [
-            [
-                "85f98178.9b7ab8"
-            ],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "f41adb1.2c369a8",
-        "type": "exec",
-        "z": "1528894b.73fa5f",
-        "command": "curl -X GET \"https://api.weather.gov/alerts/active/zone/WIZ069\" -H  \"accept: application/geo+json\"",
-        "addpay": false,
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "oldrc": false,
-        "name": "Get alerts for Rock County",
-        "x": 360,
-        "y": 160,
-        "wires": [
-            [
-                "85f98178.9b7ab8"
-            ],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "9164cbc6.10b138",
-        "type": "delay",
-        "z": "1528894b.73fa5f",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "30",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 160,
-        "y": 220,
-        "wires": [
-            [
-                "96eae0db.364c6"
-            ]
-        ]
-    },
-    {
-        "id": "2159b91e.c79886",
-        "type": "delay",
-        "z": "1528894b.73fa5f",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "60",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 160,
-        "y": 280,
-        "wires": [
-            [
-                "e15b6ca2.1bd0c"
             ]
         ]
     },
