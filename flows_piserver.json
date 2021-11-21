@@ -3456,11 +3456,12 @@
         "type": "function",
         "z": "342e347.23b064c",
         "name": "Check message",
-        "func": "/*\nCheck to see if a previous command node failed.\nIf yes then send no message (null) on output 1 and send a message\non output 2 that is intended to trigger a retry. Do this a \nmaximum of three times using a flow variable to count retries. \nThe retry count is reset in the downstream node that checks for \ngood messages.\n\nIf the command succeeded then pass the message on output 1 and\nsend no message on output 2\n*/\n\nlet s = env.get(\"ERROR_MESSAGE\");\n\n// a null payload means the command failed\n// a \"{\" character is expected as first char for valid JSON\nif ((msg.payload === \"\") ||\n        (msg.payload.charAt(0) !== \"{\"))\n{\n    // error detected\n    node.status({fill:\"red\",shape:\"dot\",text:\"retry\"});\n    var retries = flow.get('retries') || 0;\n    retries++;\n    flow.set('retries', retries);\n    if (retries <= 3)\n    {\n        node.warn(s+ \", retry \" + retries);\n        return [null, { payload: \"retry\" }];\n    }\n    node.warn(s + \", retries exceeded\");\n    return [null, null]; // abort and don't post any message\n}\n\n// message OK\nnode.status({fill:\"green\",shape:\"dot\",text:\"OK\"});\nreturn [msg, null];",
+        "func": "/*\nCheck to see if a previous command node failed.\nIf yes then send no message (null) on output 1 and send a message\non output 2 that is intended to trigger a retry. Do this a \nmaximum of three times using a flow variable to count retries. \nThe retry count is reset in the downstream node that checks for \ngood messages.\n\nIf the command succeeded then pass the message on output 1 and\nsend no message on output 2\n*/\n\nlet s = env.get(\"ERROR_MESSAGE\");\n\n// a null payload means the command failed\n// a \"{\" character is expected as first char for valid JSON\nif ((msg.payload === \"\") ||\n        (msg.payload.charAt(0) !== \"{\"))\n{\n    // error detected\n    node.status({fill:\"red\",shape:\"dot\",text:\"retry\"});\n    var retries = flow.get('retries') || 0;\n    retries++;\n    flow.set('retries', retries);\n    if (retries <= 3)\n    {\n        node.warn(s+ \", retry \" + retries);\n        return [null, { payload: \"retry\" }];\n    }\n    node.warn(s + \", retries exceeded\");\n    return [null, null]; // abort and don't post any message\n}\n\n// message OK\nflow.set('retries',0);\nnode.status({fill:\"green\",shape:\"dot\",text:\"OK\"});\nreturn [msg, null];",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
+        "libs": [],
         "x": 180,
         "y": 100,
         "wires": [
